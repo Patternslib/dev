@@ -37,6 +37,9 @@
         "whybundled": "^2.0.0",
         "yarn": "^1.22.19"
     },
+    "scripts": {
+        "test": "jest"
+    },
     "author": {
         "name": "Syslab GesmbH",
         "email": "dev@syslab.com"
