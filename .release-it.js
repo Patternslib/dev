@@ -3,7 +3,7 @@ const path = require("path");
 
 const commits_template = fs
     .readFileSync(
-        path.resolve(__dirname, ".release-it", "conventional-changelog-commit.hbs")
+        path.resolve(__dirname, "release-it", "conventional-changelog-commit.hbs")
     )
     .toString();
 
@@ -19,7 +19,7 @@ module.exports = {
     plugins: {
         "@release-it/conventional-changelog": {
             infile: "CHANGES.md",
-            header: "# Changelog\n\nSee the [history](./docs/history/index.md) for older changelog entries.\n\n",
+            header: "# Changelog\n\n",
             ignoreRecommendedBump: true,
             preset: {
                 name: "conventionalcommits",
