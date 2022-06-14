@@ -3,7 +3,7 @@
     "version": "1.0.0",
     "description": "Development base files for working with Patternslib and add-ons.",
     "license": "MIT",
-    "devDependencies": {
+    "dependencies": {
         "@babel/core": "^7.18.5",
         "@babel/eslint-parser": "^7.18.2",
         "@babel/preset-env": "^7.18.2",
