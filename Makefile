@@ -4,6 +4,8 @@ export
 ESLINT ?= npx eslint
 YARN   ?= npx yarn
 
+PACKAGE_DEV=@patternslib/dev
+PACKAGE_NAME := $(shell node -p "require('./package.json').name")
 
 .PHONY: install
 stamp-yarn install:
@@ -35,7 +37,10 @@ check:: stamp-yarn eslint
 
 .PHONY: bundle
 bundle: stamp-yarn
+ifneq "$(PACKAGE_NAME)" "$(PACKAGE_DEV)"
+	# Do not build a bundle for @patternslib/dev
 	$(YARN) run build
+endif
 
 
 # If you want to release on GitHub, make sure to have a .env file with a GITHUB_TOKEN.
@@ -45,13 +50,15 @@ bundle: stamp-yarn
 
 
 release-zip: clean-dist bundle
-	$(eval PACKAGE_NAME := $(subst @patternslib/,,$(subst @plone/,,$(shell node -p "require('./package.json').name"))))
+ifneq "$(PACKAGE_NAME)" "$(PACKAGE_DEV)"
+	# Do not create a zip release for @patternslib/dev
+	$(eval BUNDLE_NAME := $(subst @patternslib/,,$(subst @plone/,,$(PACKAGE_NAME)))
 	$(eval PACKAGE_VERSION := $(shell node -p "require('./package.json').version"))
-	@echo name is $(PACKAGE_NAME)
-	@echo version is $(PACKAGE_VERSION)
-	mkdir -p dist/$(PACKAGE_NAME)-bundle-$(PACKAGE_VERSION)
-	-mv dist/* dist/$(PACKAGE_NAME)-bundle-$(PACKAGE_VERSION)
-	cd dist/ && zip -r $(PACKAGE_NAME)-bundle-$(PACKAGE_VERSION).zip $(PACKAGE_NAME)-bundle-$(PACKAGE_VERSION)/
+	@echo Creating $(BUNDLE_NAME)-bundle-$(PACKAGE_VERSION).zip
+	mkdir -p dist/$(BUNDLE_NAME)-bundle-$(PACKAGE_VERSION)
+	-mv dist/* dist/$(BUNDLE_NAME)-bundle-$(PACKAGE_VERSION)
+	cd dist/ && zip -r $(BUNDLE_NAME)-bundle-$(PACKAGE_VERSION).zip $(BUNDLE_NAME)-bundle-$(PACKAGE_VERSION)/
+endif
 
 
 .PHONY: release-major
