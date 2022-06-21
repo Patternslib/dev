@@ -110,7 +110,7 @@ module.exports = (env, argv, config, babel_include = []) => {
         config.optimization.minimize = false;
         config.devtool = "source-map"; // Slowest option. False for no source maps.
         config.watchOptions = {
-            ignored: ["node_modules/**", "docs/**"],
+            ignored: ["node_modules/**", "docs/**", ".git/**"],
         };
     }
     if (process.env.NODE_ENV === "production") {
