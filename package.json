@@ -39,6 +39,10 @@
     "peerDependencies": {
         "@patternslib/patternslib": "*"
     },
+    "devDependencies": {
+        "@patternslib/patternslib": "*",
+        "jquery": "^3.6.0"
+    },
     "scripts": {
         "test": "jest"
     },
