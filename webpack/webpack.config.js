@@ -1,5 +1,4 @@
 process.traceDeprecation = true;
-const path = require("path");
 const webpack = require("webpack");
 const webpack_helpers = require("./webpack-helpers");
 
