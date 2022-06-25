@@ -52,7 +52,7 @@ endif
 release-zip: clean-dist bundle
 ifneq "$(PACKAGE_NAME)" "$(PACKAGE_DEV)"
 	@# Do not create a zip release for @patternslib/dev
-	$(eval BUNDLE_NAME := $(subst @patternslib/,,$(subst @plone/,,$(PACKAGE_NAME)))
+	$(eval BUNDLE_NAME := $(subst @patternslib/,,$(subst @plone/,,$(PACKAGE_NAME))))
 	$(eval PACKAGE_VERSION := $(shell node -p "require('./package.json').version"))
 	@echo Creating $(BUNDLE_NAME)-bundle-$(PACKAGE_VERSION).zip
 	mkdir -p dist/$(BUNDLE_NAME)-bundle-$(PACKAGE_VERSION)
