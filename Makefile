@@ -38,7 +38,7 @@ check:: stamp-yarn eslint
 .PHONY: bundle
 bundle: stamp-yarn
 ifneq "$(PACKAGE_NAME)" "$(PACKAGE_DEV)"
-	# Do not build a bundle for @patternslib/dev
+	@# Do not build a bundle for @patternslib/dev
 	$(YARN) run build
 endif
 
@@ -51,7 +51,7 @@ endif
 
 release-zip: clean-dist bundle
 ifneq "$(PACKAGE_NAME)" "$(PACKAGE_DEV)"
-	# Do not create a zip release for @patternslib/dev
+	@# Do not create a zip release for @patternslib/dev
 	$(eval BUNDLE_NAME := $(subst @patternslib/,,$(subst @plone/,,$(PACKAGE_NAME)))
 	$(eval PACKAGE_VERSION := $(shell node -p "require('./package.json').version"))
 	@echo Creating $(BUNDLE_NAME)-bundle-$(PACKAGE_VERSION).zip
