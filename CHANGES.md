@@ -2,6 +2,38 @@
 
 
 
+## [2.2.0](https://github.com/patternslib/dev/compare/2.1.0...2.2.0) (2022-06-27)
+
+
+### Bug Fixes
+
+
+* Fix missing parentheses in release-zip. ([72d435d](https://github.com/patternslib/dev/commit/72d435d500cbf9ec460bf4f5961027025e554221))
+
+
+### Breaking Changes
+
+
+* **webpack module federation:** Make wepack module federation config factory more explicit. ([efd266c](https://github.com/patternslib/dev/commit/efd266cfc82372c467eb6a8b470360b72647b9bd))Change signature of the webpack mf config factory to make it simpler, more flexible and more explicit at the cost of having to pass more options.
+
+ - Remove parameters ``package_json`` and ``shared`` in favor of ``dependencies``.
+ - Explicitly pass all dependencies via ``dependencies``, also the base ones from @patternslib/patternslib if wanted.
+ - Always explicitly pass the module federation name (e.g. the package.json's package name).
+
+This makes the MF config factory simpler although you probably have to pass more options.
+You now can easily just add the dependencies you want instead of having
+always @patternslib/patternslib dependencies added.
+
+
+### Maintenance
+
+
+* Add [@plone](https://github.com/plone) to jest and webpack transform ignores. ([678bf09](https://github.com/patternslib/dev/commit/678bf090be043c90c462075980db5ac1a9470d39))
+
+* Remove unnecessary import from webpack.config.js. ([6658497](https://github.com/patternslib/dev/commit/6658497746e9fd948dbbacd5ad6cfa42b98168af))
+
+* Upgrade dependencies. ([e1e423e](https://github.com/patternslib/dev/commit/e1e423eb3371f5c4792ad246e9df8ed2d3d434d9))
+
 ## [2.1.0](https://github.com/patternslib/dev/compare/2.0.0...2.1.0) (2022-06-25)
 
 
