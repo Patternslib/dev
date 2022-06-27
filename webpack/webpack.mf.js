@@ -1,5 +1,4 @@
 const { ModuleFederationPlugin } = require("webpack").container;
-const patternslib_package_json = require("@patternslib/patternslib/package.json");
 
 // Patternslib Module Federation bundle prefix.
 // This is used to filter for module federation enabled bundles.
@@ -35,34 +34,15 @@ function shared_from_dependencies(...dependencies) {
  * Use this to extend your webpack configuration for module federation support.
  *
  * @param {String} name - Bundle/remote name. If not given, the package.json name is used.
- * @param {String} filename - Name of the generated remote entry file. Default ``remote.min.js``.
- * @param {Object} package_json - Your imported project's package.json file. This is to automatically set the shared dependencies.
  * @param {String} remote_entry - Path to which the new remote entry file is written to.
- * @param {Object} shared - Object with dependency name - version specifier pairs. Can be used instead of the package_json parameter.
+ * @param {String} filename - Name of the generated remote entry file. Default ``remote.min.js``.
+ * @param {Object} dependencies - Object with dependency name - version specifier pairs. Is used to set up the shared dependencies including their version requirements.
  * @returns {Object} - Webpack config partial with instantiated module federation plugins.
  */
-function config({
-    name,
-    filename = "remote.min.js",
-    package_json,
-    remote_entry,
-    shared = {},
-}) {
-    // If no name is given, use the package name.
-    name = name || package_json?.name || patternslib_package_json.name;
-
+function config({ name, remote_entry, filename = "remote.min.js", dependencies = {} }) {
     // Create a JS-variable compatible name and add a prefix.
     const normalized_bundle_name =
         MF_NAME_PREFIX + name.match(/([_$A-Za-z0-9])/g).join("");
-
-    shared = {
-        ...(!Object.keys(shared).length && // only include package.json depenencies, if shared is empty.
-            shared_from_dependencies(
-                patternslib_package_json.dependencies,
-                package_json?.dependencies
-            )),
-        ...shared,
-    };
 
     return new ModuleFederationPlugin({
         name: normalized_bundle_name,
@@ -72,7 +52,7 @@ function config({
                 "./main": remote_entry,
             },
         }),
-        shared: shared,
+        shared: shared_from_dependencies(dependencies),
     });
 }
 
