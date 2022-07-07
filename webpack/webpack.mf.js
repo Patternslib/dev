@@ -37,9 +37,16 @@ function shared_from_dependencies(...dependencies) {
  * @param {String} remote_entry - Path to which the new remote entry file is written to.
  * @param {String} filename - Name of the generated remote entry file. Default ``remote.min.js``.
  * @param {Object} dependencies - Object with dependency name - version specifier pairs. Is used to set up the shared dependencies including their version requirements.
+ * @param {Object} shared - Directly provide the shared object for the Webpack Module Federation Plugin. Extends generated shared definitions from the dependencies object and will overwrite existing entries.
  * @returns {Object} - Webpack config partial with instantiated module federation plugins.
  */
-function config({ name, remote_entry, filename = "remote.min.js", dependencies = {} }) {
+function config({
+    name,
+    remote_entry,
+    filename = "remote.min.js",
+    dependencies = {},
+    shared = {},
+}) {
     // Create a JS-variable compatible name and add a prefix.
     const normalized_bundle_name =
         MF_NAME_PREFIX + name.match(/([_$A-Za-z0-9])/g).join("");
@@ -52,7 +59,10 @@ function config({ name, remote_entry, filename = "remote.min.js", dependencies =
                 "./main": remote_entry,
             },
         }),
-        shared: shared_from_dependencies(dependencies),
+        shared: {
+            ...shared_from_dependencies(dependencies),
+            ...shared,
+        },
     });
 }
 
