@@ -2,6 +2,15 @@
 
 
 
+## [2.3.0](https://github.com/patternslib/dev/compare/2.2.1...2.3.0) (2022-07-07)
+
+
+### Features
+
+
+* **Module Federation:** Add a shared parameter for MF config factory. ([22e4b5e](https://github.com/patternslib/dev/commit/22e4b5e0a4d933a61008c5f203c90ad94d6b084f))The shared parameter allows to directly provide the shared object for the Webpack Module Federation Plugin.
+It extends generated shared definitions from the dependencies object and will overwrite existing entries.
+
 ## [2.2.1](https://github.com/patternslib/dev/compare/2.2.0...2.2.1) (2022-07-06)
 
 
