@@ -9,21 +9,24 @@ const MF_NAME_PREFIX = "__patternslib_mf__";
  * Get dependencies and versions for the module federation plugin from
  * package.json dependency lists.
  *
- * @param {Array} - List of package.json dependencies fields.
+ * @param {Object} dependencies - Object with dependency name - version specifier pairs.
+ * @param {Object} sharing_hints - Object with optional sharing hints for dependencies. key -> dependency name, value -> sharing hint.
  * @returns {Object} - Object with dependencies for the module federation plugin.
  */
-function shared_from_dependencies(...dependencies) {
+function shared_from_dependencies(dependencies, sharing_hints) {
     const shared = {};
-    for (const deps of dependencies) {
-        if (!deps) {
-            continue;
+    for (const [name, version] of Object.entries(dependencies)) {
+        let hints = {
+            singleton: true,
+            requiredVersion: version,
         }
-        for (const [name, version] of Object.entries(deps)) {
-            shared[name] = {
-                singleton: true,
-                requiredVersion: version,
-            };
+        if(name in sharing_hints) {
+            hints = {
+                ...hints,
+                ...sharing_hints[name],
+            }
         }
+        shared[name] = hints;
     }
     return shared;
 }
@@ -37,9 +40,10 @@ function shared_from_dependencies(...dependencies) {
  * @param {String} remote_entry - Path to which the new remote entry file is written to.
  * @param {String} filename - Name of the generated remote entry file. Default ``remote.min.js``.
  * @param {Object} dependencies - Object with dependency name - version specifier pairs. Is used to set up the shared dependencies including their version requirements.
+ * @param {Object} sharing_hints - Object with sharing hints for modules defined in dependencies. Is used to add/override the default sharing hints.
  * @returns {Object} - Webpack config partial with instantiated module federation plugins.
  */
-function config({ name, remote_entry, filename = "remote.min.js", dependencies = {} }) {
+function config({ name, remote_entry, filename = "remote.min.js", dependencies = {}, sharing_hints = {} }) {
     // Create a JS-variable compatible name and add a prefix.
     const normalized_bundle_name =
         MF_NAME_PREFIX + name.match(/([_$A-Za-z0-9])/g).join("");
@@ -52,7 +56,7 @@ function config({ name, remote_entry, filename = "remote.min.js", dependencies =
                 "./main": remote_entry,
             },
         }),
-        shared: shared_from_dependencies(dependencies),
+        shared: shared_from_dependencies(dependencies, sharing_hints),
     });
 }
 
