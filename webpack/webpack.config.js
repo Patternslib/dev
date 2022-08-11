@@ -5,7 +5,7 @@ const webpack_helpers = require("./webpack-helpers");
 // plugins
 const TerserPlugin = require("terser-webpack-plugin");
 
-module.exports = (env, argv, config, babel_include = []) => {
+const config_factory = (env, argv, config, babel_include = [], package_json) => {
     // Webpack config
 
     // Packages in node_modules to NOT exclude from babel processing.
@@ -96,6 +96,15 @@ module.exports = (env, argv, config, babel_include = []) => {
         ],
     };
 
+    if (package_json && package_json.version && package_json.name) {
+        // Add a banner to generated chunks with the bundle name and version.
+        base_config.plugins.push(
+            new webpack.BannerPlugin({
+                banner: `${package_json.name} ${package_json.version}`,
+            })
+        );
+    }
+
     // Override base_config with entries from config.
     // Most useful the ``entry`` entry.
     config = Object.assign(base_config, config);
@@ -124,14 +133,17 @@ module.exports = (env, argv, config, babel_include = []) => {
             new TerserPlugin({
                 include: /(\.js$)/,
                 extractComments: false,
-                terserOptions: {
-                    output: {
-                        comments: false,
-                    },
-                },
             }),
         ];
         config.devtool = "source-map"; // Slowest option. False for no source maps.
     }
     return config;
+};
+
+// Default export
+const module_exports = (module.exports = config_factory);
+
+// Named exports
+module_exports.config = ({ env, argv, config, babel_include = [], package_json }) => {
+    return config_factory(env, argv, config, babel_include, package_json);
 };

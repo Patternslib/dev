@@ -33,7 +33,7 @@ function shared_from_dependencies(...dependencies) {
  *
  * Use this to extend your webpack configuration for module federation support.
  *
- * @param {String} name - Bundle/remote name. If not given, the package.json name is used.
+ * @param {String} name - Bundle/remote name.
  * @param {String} remote_entry - Path to which the new remote entry file is written to.
  * @param {String} filename - Name of the generated remote entry file. Default ``remote.min.js``.
  * @param {Object} dependencies - Object with dependency name - version specifier pairs. Is used to set up the shared dependencies including their version requirements.
