@@ -2,6 +2,25 @@
 
 
 
+## [2.4.0](https://github.com/patternslib/dev/compare/2.3.0...2.4.0) (2022-08-11)
+
+
+### Features
+
+
+* **Webpack:** Add bundle name and version to the banner. ([1058b6d](https://github.com/patternslib/dev/commit/1058b6d58b6e05c0c841a02a753a7fd823688595))For this, you have to pass your project's package.json as argument to the webpack config factory.
+Both values - name and version - are taken from the package.json data.
+
+* **Webpack:** Add config export with named parameters. ([f7b2471](https://github.com/patternslib/dev/commit/f7b24711ce223eaa51e0ea819643a656cae846f3))Add config export along with the default export to support named parameters via parameter destructuring.
+
+
+### Maintenance
+
+
+* Upgrade dependencies. ([9039642](https://github.com/patternslib/dev/commit/90396428d8b00dc6d60137387280e26f335d6128))
+
+* **Webpack:** Correct API doc for shared_from_dependencies. ([f2b0031](https://github.com/patternslib/dev/commit/f2b003193312a332a100b8e1f6939dedcdc0e23d))
+
 ## [2.3.0](https://github.com/patternslib/dev/compare/2.2.1...2.3.0) (2022-07-07)
 
 
