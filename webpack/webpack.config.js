@@ -5,7 +5,7 @@ const webpack_helpers = require("./webpack-helpers");
 // plugins
 const TerserPlugin = require("terser-webpack-plugin");
 
-module.exports = (env, argv, config, babel_include = [], package_json) => {
+const config_factory = (env, argv, config, babel_include = [], package_json) => {
     // Webpack config
 
     // Packages in node_modules to NOT exclude from babel processing.
@@ -138,4 +138,12 @@ module.exports = (env, argv, config, babel_include = [], package_json) => {
         config.devtool = "source-map"; // Slowest option. False for no source maps.
     }
     return config;
+};
+
+// Default export
+const module_exports = (module.exports = config_factory);
+
+// Named exports
+module_exports.config = ({ env, argv, config, babel_include = [], package_json }) => {
+    return config_factory(env, argv, config, babel_include, package_json);
 };
