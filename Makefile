@@ -35,8 +35,16 @@ check:: stamp-yarn eslint
 	$(YARN) run test
 
 
+bundle-pre:
+	@# Override this in your project to add some tasks before the bundle is built.
+	@# Example: Unlink any linked dependencies.
+	@#     bundle-pre:
+	@#         -yarn unlink @patternslib/patternslib
+	@#         yarn install --force
+
+
 .PHONY: bundle
-bundle: stamp-yarn
+bundle: bundle-pre stamp-yarn
 ifneq "$(PACKAGE_NAME)" "$(PACKAGE_DEV)"
 	@# Do not build a bundle for @patternslib/dev
 	$(YARN) run build
