@@ -2,6 +2,22 @@
 
 
 
+## [2.5.0](https://github.com/patternslib/dev/compare/2.4.0...2.5.0) (2022-08-19)
+
+
+### Features
+
+
+* **Makefile:** Add empty bundle-pre target for customization. ([0290e61](https://github.com/patternslib/dev/commit/0290e61fac9230e24428dd0b846c5bace145f56d))The empty bundle-pre target is run before the bundle target and can be
+overwritten in extending projects to add some tasks before bundle generation.
+This can be used to unlink and reinstall any dependencies before bundle generation.
+
+
+### Maintenance
+
+
+* Upgrade dependencies. ([64094da](https://github.com/patternslib/dev/commit/64094da766b42c245dad7640216009b1d0c2701e))
+
 ## [2.4.0](https://github.com/patternslib/dev/compare/2.3.0...2.4.0) (2022-08-11)
 
 
