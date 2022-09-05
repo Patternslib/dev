@@ -2,6 +2,20 @@
 
 
 
+## [2.6.0](https://github.com/patternslib/dev/compare/2.5.0...2.6.0) (2022-09-05)
+
+
+### Bug Fixes
+
+
+* Fix GitHub Actions branch name. ([e59126a](https://github.com/patternslib/dev/commit/e59126ab8ba9cc1b284c7b964dabe905de9f9fd1))
+
+
+### Maintenance
+
+
+* Upgrade dependencies. ([0720aad](https://github.com/patternslib/dev/commit/0720aadc0d8f8064996b8ec5568ee8d30c84a70c))
+
 ## [2.5.0](https://github.com/patternslib/dev/compare/2.4.0...2.5.0) (2022-08-19)
 
 
