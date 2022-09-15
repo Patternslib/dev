@@ -2,6 +2,20 @@
 
 
 
+## [2.7.0](https://github.com/patternslib/dev/compare/2.6.0...2.7.0) (2022-09-15)
+
+
+### Features
+
+
+* Define the close, show and showModal methods in dialog elements. ([3b59aed](https://github.com/patternslib/dev/commit/3b59aed8556c5103ada9efa175896f83e0fac6c0))
+
+
+### Maintenance
+
+
+* Upgrade dependencies. ([087dca5](https://github.com/patternslib/dev/commit/087dca5d9de49423f80ce670e342bef9629dab1c))
+
 ## [2.6.0](https://github.com/patternslib/dev/compare/2.5.0...2.6.0) (2022-09-05)
 
 
