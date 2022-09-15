@@ -99,3 +99,17 @@ Object.defineProperty(window, "matchMedia", {
         dispatchEvent: jest.fn(),
     })),
 });
+
+// Define the close, show and showModal methods in dialog elements.
+// Also see:
+// - https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement
+// - https://github.com/jsdom/jsdom/issues/3294
+HTMLDialogElement.prototype.close = jest.fn().mockImplementation(function () {
+    this.open = false;
+});
+HTMLDialogElement.prototype.show = jest.fn().mockImplementation(function () {
+    this.open = true;
+});
+HTMLDialogElement.prototype.showModal = jest.fn().mockImplementation(function () {
+    this.open = true;
+});
