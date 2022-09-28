@@ -2,6 +2,14 @@
 
 
 
+## [2.7.2](https://github.com/patternslib/dev/compare/2.7.1...2.7.2) (2022-09-28)
+
+
+### Maintenance
+
+
+* Upgrade dependencies. ([1edd750](https://github.com/patternslib/dev/commit/1edd7508ff8571110c00939f29843ab9a99986d5))
+
 ## [2.7.1](https://github.com/patternslib/dev/compare/2.7.0...2.7.1) (2022-09-20)
 
 
