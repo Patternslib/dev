@@ -67,17 +67,6 @@ global.IntersectionObserver = class IntersectionObserver {
     }
 };
 
-// Do not output error messages
-import logging from "@patternslib/patternslib/src/core/logging";
-logging.setLevel(50); // level: FATAL
-
-// patch dom.is_visible to not rely on jest-unavailable offsetWidth/Height but
-// simply on el.hidden.
-import dom from "@patternslib/patternslib/src/core/dom";
-dom.is_visible = (el) => {
-    return !el.hidden;
-};
-
 // jsDOM does not add ``getClientRects`` or ``getBoundingClientRect`` to a ``document.createRange()``
 // Originally from pat-tiptap to allow scroloing into the view when focusing the editor.
 Range.prototype.getClientRects = () => [];

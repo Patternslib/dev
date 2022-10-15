@@ -37,7 +37,6 @@
         "yarn": "^1.22.19"
     },
     "devDependencies": {
-        "@patternslib/patternslib": "*",
         "jquery": "^3.6.1"
     },
     "scripts": {
