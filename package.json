@@ -36,9 +36,6 @@
         "whybundled": "^2.0.0",
         "yarn": "^1.22.19"
     },
-    "devDependencies": {
-        "jquery": "^3.6.1"
-    },
     "scripts": {
         "test": "jest"
     },
