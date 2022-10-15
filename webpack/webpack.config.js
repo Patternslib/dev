@@ -54,15 +54,6 @@ const config_factory = (env, argv, config, babel_include = [], package_json) => 
                     exclude: new RegExp(babel_exclude),
                     loader: "babel-loader",
                 },
-                // TODO: Remove with next major version.
-                {
-                    test: /showdown-prettify/,
-                    use: [
-                        {
-                            loader: "imports-loader?showdown,google-code-prettify",
-                        },
-                    ],
-                },
                 {
                     test: /\.(?:sass|scss|css)$/i,
                     use: [
