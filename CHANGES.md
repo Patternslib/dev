@@ -2,6 +2,37 @@
 
 
 
+## [3.0.0](https://github.com/patternslib/dev/compare/2.7.2...3.0.0) (2022-10-15)
+
+
+### Features
+
+
+* **Build:** Add Module Federation configuration for webpack. ([b84c2fb](https://github.com/patternslib/dev/commit/b84c2fb8053837206c044e3148522d9a54afa300))
+
+
+### Breaking Changes
+
+
+* **Build:** Remove the showdown-prettify loading config and the now unused imports-loader. ([27ba90f](https://github.com/patternslib/dev/commit/27ba90fc9e615c57b4be0ae20b84c2f16a918759))
+
+* **Tests:** Remove dependency on jQuery. ([259d801](https://github.com/patternslib/dev/commit/259d801ab0a203ea64073e3cc0366976a38f1e0c))Use the following in your test setup to provide jQuery to external
+libraries if they depend on a global jQuery object or extend from the
+jest config from @patternslib/patternslib:
+
+```js
+import jquery from "jquery";
+global.$ = global.jQuery = jquery;
+```
+
+* **Tests:** Remove the Dependency on @patternslib/patternslib. ([afe8fee](https://github.com/patternslib/dev/commit/afe8feec6304d2ce184afd587d429f3ae5bd533c))If you need Patternslib specific test setup, extend from Patternslib.
+
+
+### Maintenance
+
+
+* Upgrade dependencies. ([f868454](https://github.com/patternslib/dev/commit/f868454982447190e968ab9eab4988bfee01c43a))
+
 ## [2.7.2](https://github.com/patternslib/dev/compare/2.7.1...2.7.2) (2022-09-28)
 
 
