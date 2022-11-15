@@ -1,0 +1,7 @@
+.DS_Store
+.env
+node_modules/
+stamp-yarn
+stats.json
+yarn-error.log
+*.zip
