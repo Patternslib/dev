@@ -135,7 +135,8 @@ release: clean install check prepare-release release-zip
 		&& git checkout CHANGES.md
 
 	@# Remove the bundle from release-zip again.
-	rm $(BUNDLE_NAME)-bundle-$(PACKAGE_VERSION).zip
+	@# But don't break if it doesn't exist.
+	-rm $(BUNDLE_NAME)-bundle-$(PACKAGE_VERSION).zip
 
 
 .PHONY: release-major
