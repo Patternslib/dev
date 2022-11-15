@@ -2,6 +2,14 @@
 
 
 
+## [3.1.1](https://github.com/patternslib/dev/compare/3.1.0...3.1.1) (2022-11-15)
+
+
+### Bug Fixes
+
+
+* Fix Makefile error with GitHub release. ([7df20db](https://github.com/patternslib/dev/commit/7df20db4ef54c820b07e49db9123823b23ee1161))
+
 ## [3.1.0](https://github.com/patternslib/dev/compare/3.0.0...3.1.0) (2022-11-15)
 
 
