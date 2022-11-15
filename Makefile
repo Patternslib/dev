@@ -131,7 +131,7 @@ release: clean install check prepare-release release-zip
 			--no-github.draft \
 			--no-increment \
 			--no-git \
-			--no-npm
+			--no-npm \
 		&& git checkout CHANGES.md
 
 	@# Remove the bundle from release-zip again.
