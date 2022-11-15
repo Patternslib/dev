@@ -2,6 +2,14 @@
 
 
 
+## [3.1.2](https://github.com/patternslib/dev/compare/3.1.1...3.1.2) (2022-11-15)
+
+
+### Bug Fixes
+
+
+* Fix Makefile to not emit an error when no compiled bundle is found. ([15363a7](https://github.com/patternslib/dev/commit/15363a7e50bc290a7b394f7d3aeeac1634e8ab1d))
+
 ## [3.1.1](https://github.com/patternslib/dev/compare/3.1.0...3.1.1) (2022-11-15)
 
 
