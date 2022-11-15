@@ -2,6 +2,36 @@
 
 
 
+## [3.1.0](https://github.com/patternslib/dev/compare/3.0.0...3.1.0) (2022-11-15)
+
+
+### Features
+
+
+* Allow to add the compiled bundles to npm packages. ([84bdefd](https://github.com/patternslib/dev/commit/84bdefd339b9aa553ef78e9448e4cdd998178d40))Creating a npm release with the Makefile prepares now a bundle build
+with the correct package version added as a comment to the bundle files.
+The compiled bundle can then be uploaded to npm if it is part of the git
+repository (included by .gitignore) or part of the npm release
+(preferred, included by .npmignore).
+
+Adding the compiled bundle to npm allows to directly include it via a
+CDN like so:
+
+https://cdn.jsdelivr.net/npm/@patternslib/patternslib@9.7.0-alpha.2/dist/bundle.min.js
+or
+https://unpkg.com/@patternslib/patternslib@9.7.0-alpha.2/dist/bundle.min.js
+
+We have to compile the bundle with the correct version BEFORE the npm
+package is created with release-it. The next version is queried using
+the LEVEL parameter (set by the different release targets) and the
+"semver" tool.
+
+
+### Maintenance
+
+
+* Upgrade dependencies. ([e687405](https://github.com/patternslib/dev/commit/e6874052cf9ae2cd359996659c091de532b6f5cb))
+
 ## [3.0.0](https://github.com/patternslib/dev/compare/2.7.2...3.0.0) (2022-10-15)
 
 
