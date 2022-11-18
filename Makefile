@@ -42,7 +42,7 @@ eslint: stamp-yarn
 
 
 .PHONY: check
-check:: stamp-yarn eslint
+check: stamp-yarn eslint
 	$(YARN) run test
 
 
