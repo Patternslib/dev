@@ -94,7 +94,7 @@ ifeq ($(LEVEL),$(filter $(LEVEL), alpha beta))
 	@# Set level argument for release-it.
 	$(eval RELEASE_IT_LEVEL := "--preRelease=$(LEVEL)")
 	@# Get the next version via semver.
-	$(eval NEXT_VERSION := $(shell npx semver --increment premajor --preid $(LEVEL) $(CURRENT_VERSION)))
+	$(eval NEXT_VERSION := $(shell npx semver --increment prerelease --preid $(LEVEL) $(CURRENT_VERSION)))
 else
 	@# case normal major/minor/patch release
 
