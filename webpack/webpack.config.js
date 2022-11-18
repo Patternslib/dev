@@ -93,6 +93,7 @@ const config_factory = (env, argv, config, babel_include = [], package_json) => 
         base_config.plugins.push(
             new webpack.BannerPlugin({
                 banner: `${package_json.name} ${package_json.version}`,
+                entryOnly: true,
             })
         );
     }
