@@ -2,6 +2,21 @@
 
 
 
+## [3.1.3](https://github.com/patternslib/dev/compare/3.1.2...3.1.3) (2022-11-18)
+
+
+### Bug Fixes
+
+
+* **Webpack:** Add the version banner only to the entry point files. ([6f82df1](https://github.com/patternslib/dev/commit/6f82df1d3215c07d4ff4cc00d3d6fc56f9f1fdca))This fixes a problem where each chunk file was changed with a new release, even if nothing else than the version has changed.
+Adding the version banner only to the entry points still allows to check the version while keeping the changeset for releases small.
+
+
+### Maintenance
+
+
+* Upgrade dependencies. ([b2167b4](https://github.com/patternslib/dev/commit/b2167b458711f73480797505e18e75cf3ef8ce33))
+
 ## [3.1.2](https://github.com/patternslib/dev/compare/3.1.1...3.1.2) (2022-11-15)
 
 
