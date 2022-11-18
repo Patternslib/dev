@@ -2,6 +2,14 @@
 
 
 
+## [3.1.4](https://github.com/patternslib/dev/compare/3.1.3...3.1.4) (2022-11-18)
+
+
+### Bug Fixes
+
+
+* **Makefile:** Change the 'check' target to not be a double-colon rule, which cannot be overwritten. See: https://www.gnu.org/software/make/manual/html_node/Double_002dColon.html ([5f0f08c](https://github.com/patternslib/dev/commit/5f0f08cd8266f5c2cf5689f3b95a6294990e3dd6))
+
 ## [3.1.3](https://github.com/patternslib/dev/compare/3.1.2...3.1.3) (2022-11-18)
 
 
