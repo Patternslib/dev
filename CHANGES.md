@@ -2,6 +2,14 @@
 
 
 
+## [3.1.5](https://github.com/patternslib/dev/compare/3.1.4...3.1.5) (2022-11-18)
+
+
+### Bug Fixes
+
+
+* **Build:** Get the correct version increment for prereleases. ([8947884](https://github.com/patternslib/dev/commit/8947884e2a91fd39305ea9499d112c2dd8c845ae))
+
 ## [3.1.4](https://github.com/patternslib/dev/compare/3.1.3...3.1.4) (2022-11-18)
 
 
