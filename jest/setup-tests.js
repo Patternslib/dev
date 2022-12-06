@@ -1,5 +1,4 @@
 // need this for async/await in tests
-import "core-js/stable";
 import "regenerator-runtime/runtime";
 
 // pat-fullscreen
