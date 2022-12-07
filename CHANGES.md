@@ -2,6 +2,16 @@
 
 
 
+## [3.1.6](https://github.com/patternslib/dev/compare/3.1.5...3.1.6) (2022-12-07)
+
+
+### Maintenance
+
+
+* Remove core-js. ([2abfe2b](https://github.com/patternslib/dev/commit/2abfe2b1904aec7a61c498f83b69f44f4b2161ba))
+
+* Upgrade dependencies. ([0a1b506](https://github.com/patternslib/dev/commit/0a1b5068e724c049acc4dc9caca0c4ce420f5178))
+
 ## [3.1.5](https://github.com/patternslib/dev/compare/3.1.4...3.1.5) (2022-11-18)
 
 
