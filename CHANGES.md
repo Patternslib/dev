@@ -2,6 +2,18 @@
 
 
 
+## [3.1.7](https://github.com/patternslib/dev/compare/3.1.6...3.1.7) (2022-12-11)
+
+
+### Maintenance
+
+
+* Include changelog from pre-releases in final. ([b053a10](https://github.com/patternslib/dev/commit/b053a103ae859b1c33904d48fd80076cbec040eb))When doing a final release after a series of pre-releases, include all
+the pre-releases changelog items in the final release.
+See: https://github.com/release-it/release-it/blob/master/docs/pre-releases.md
+
+* Upgrade dependencies. ([98d81a3](https://github.com/patternslib/dev/commit/98d81a3682ba68058bdc3e263300c0a131f5a4c5))
+
 ## [3.1.6](https://github.com/patternslib/dev/compare/3.1.5...3.1.6) (2022-12-07)
 
 

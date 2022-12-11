@@ -1,6 +1,6 @@
 {
     "name": "@patternslib/dev",
-    "version": "3.1.6",
+    "version": "3.1.7",
     "description": "Development base files for working with Patternslib and add-ons.",
     "license": "MIT",
     "dependencies": {
