@@ -115,7 +115,7 @@ const config_factory = (env, argv, config, babel_include = [], package_json) => 
             },
         };
         config.optimization.minimize = false;
-        config.devtool = "source-map"; // Slowest option. False for no source maps.
+        config.devtool = false; // No source maps for development.
         config.watchOptions = {
             ignored: ["node_modules/**", "docs/**", ".git/**"],
         };
