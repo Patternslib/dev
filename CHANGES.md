@@ -2,6 +2,16 @@
 
 
 
+## [3.1.8](https://github.com/patternslib/dev/compare/3.1.7...3.1.8) (2022-12-19)
+
+
+### Maintenance
+
+
+* For non-minified development builds, do not generate source maps. ([babf289](https://github.com/patternslib/dev/commit/babf2893638b17f84e651a79c3e67fbbd81d1914))
+
+* Upgrade dependencies. ([20f7b31](https://github.com/patternslib/dev/commit/20f7b315e1b0f6fa110c96ddc7c97ae206203676))
+
 ## [3.1.7](https://github.com/patternslib/dev/compare/3.1.6...3.1.7) (2022-12-11)
 
 
