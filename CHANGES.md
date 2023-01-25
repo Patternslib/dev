@@ -2,6 +2,16 @@
 
 
 
+## [3.1.9](https://github.com/patternslib/dev/compare/3.1.8...3.1.9) (2023-01-25)
+
+
+### Maintenance
+
+
+* enable source maps for development again. ([fdf8a86](https://github.com/patternslib/dev/commit/fdf8a86086053f8021f74514810fdccb5d7b7724))
+
+* Upgrade dependencies. ([feb26ce](https://github.com/patternslib/dev/commit/feb26cee1a2cb805c6b13407f37f6d9e85b817d6))
+
 ## [3.1.8](https://github.com/patternslib/dev/compare/3.1.7...3.1.8) (2022-12-19)
 
 
