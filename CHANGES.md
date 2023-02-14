@@ -2,6 +2,16 @@
 
 
 
+## [3.1.10](https://github.com/patternslib/dev/compare/3.1.9...3.1.10) (2023-02-14)
+
+
+### Maintenance
+
+
+* Upgrade dependencies. ([4aad9c8](https://github.com/patternslib/dev/commit/4aad9c8fc76df2d098f0d5abbac6c271cbe8edbe))
+
+* When doing a final release, set tagExclude to ignore pre-releases when finding the last release. This should include all changelog entrief from the pre-releases. ([4abf750](https://github.com/patternslib/dev/commit/4abf750b95b2c3d106feccb19c7f0c27d7bfc8c4))
+
 ## [3.1.9](https://github.com/patternslib/dev/compare/3.1.8...3.1.9) (2023-01-25)
 
 
