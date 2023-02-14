@@ -93,7 +93,7 @@ ifeq ($(LEVEL),$(filter $(LEVEL), alpha beta))
 
 	@# Include all changes from the previous release in the changelog by using
 	@# the release-it default setting.
-	$(eval TAG_MATCH := "")
+	$(eval RELEASE_IT_EXTRA_OPTIONS := "")
 	@# Set level argument for release-it.
 	$(eval RELEASE_IT_LEVEL := "--preRelease=$(LEVEL)")
 	@# Get the next version via semver.
@@ -103,7 +103,7 @@ else
 
 	@# Include all changes from the previous non-prerelease in the changelog.
 	@# See: https://github.com/release-it/release-it/blob/master/docs/pre-releases.md
-	$(eval TAG_MATCH := "--git.tagMatch='[0-9]*\\.[0-9]*\\.[0-9]*'")
+	$(eval RELEASE_IT_EXTRA_OPTIONS := "--git.tagExclude='*[-]*'")
 	@# Set level argument for release-it.
 	$(eval RELEASE_IT_LEVEL := $(LEVEL))
 	@# Get the next version via semver.
@@ -129,16 +129,15 @@ release: clean install check prepare-release release-zip
 	@# 1) Release on npm.
 	@# 2) When successful, update release on GitHub
 	@# 3) Checkout CHANGES.md, which was modified by step 2)
-	npx release-it $(RELEASE_IT_LEVEL) $(TAG_MATCH) \
+	npx release-it $(RELEASE_IT_LEVEL) $(RELEASE_IT_EXTRA_OPTIONS) \
 		&& npx release-it \
 			--github.release \
 			--github.update \
 			--github.assets=$(BUNDLE_NAME)-bundle-$(NEXT_VERSION).zip \
-			--no-github.draft \
 			--no-increment \
+			--no-github.draft \
 			--no-git \
 			--no-npm \
-			$(TAG_MATCH) \
 		&& git checkout CHANGES.md
 
 	@# Remove the bundle from release-zip again.
