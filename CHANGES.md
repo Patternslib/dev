@@ -2,6 +2,14 @@
 
 
 
+## [3.1.11](https://github.com/patternslib/dev/compare/3.1.10...3.1.11) (2023-03-09)
+
+
+### Maintenance
+
+
+* Upgrade dependencies. ([cc4a9be](https://github.com/patternslib/dev/commit/cc4a9be73406070bd9e057f395a7baaf991a4120))
+
 ## [3.1.10](https://github.com/patternslib/dev/compare/3.1.9...3.1.10) (2023-02-14)
 
 
