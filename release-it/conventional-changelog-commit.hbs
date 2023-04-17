@@ -24,6 +24,15 @@
   {{~hash}}
 {{~/if}}
 
+{{#if body}}
+
+  {{body}}
+{{/if}}
+{{#if footer}}
+
+  {{footer}}
+{{/if}}
+
 {{~!-- commit references --}}
 {{~#if references~}}
 
@@ -60,11 +69,4 @@ closes
     {{~this.repository}}#{{this.issue}}
   {{~/if}}{{/each}}
 {{~/if}}
-{{#if body}}
 
-  {{body}}
-{{/if}}
-{{#if footer}}
-
-  {{footer}}
-{{/if}}
