@@ -25,6 +25,29 @@ increments got only a patch-level increment.
 
 * Upgrade dependencies. ([68f4ca8](https://github.com/patternslib/dev/commit/68f4ca8b4d243f1b1b25ffacb404be71103b86aa))
 
+## [3.2.0](https://github.com/patternslib/dev/compare/3.1.13...3.2.0) (2023-04-17)
+
+
+### Features
+
+
+* Change prerelease commands to prerelease-INCREMENT-PREID ([6b488e1](https://github.com/patternslib/dev/commit/6b488e120761951ba01eae524563bdd490a9b739))
+
+  Change the prerelease commands to define the increment level.
+Instead of "prerelease-alpha" there are now "prerelease-major-alpha",
+"prerelease-minor-alpha" and "prerelease-patch-alpha".
+Instead of "prerelease-beta" there are now "prerelease-major-beta",
+"prerelease-minor-beta" and "prerelease-patch-beta".
+This fixes a problem where the first prerelease for major or minor
+increments got only a patch-level increment.
+
+
+
+### Maintenance
+
+
+* Upgrade dependencies. ([68f4ca8](https://github.com/patternslib/dev/commit/68f4ca8b4d243f1b1b25ffacb404be71103b86aa))
+
 ## [3.1.13](https://github.com/patternslib/dev/compare/3.1.12...3.1.13) (2023-04-17)
 
 
