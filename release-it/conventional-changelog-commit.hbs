@@ -26,7 +26,8 @@
 
 {{~!-- commit references --}}
 {{~#if references~}}
-  , closes
+
+closes
   {{~#each references}} {{#if @root.linkReferences~}}
     [
     {{~#if this.owner}}
@@ -61,10 +62,9 @@
 {{~/if}}
 {{#if body}}
 
-  {{~body}}
-{{~/if}}
+  {{body}}
+{{/if}}
 {{#if footer}}
 
-  {{~footer}}
-{{~/if}}
-
+  {{footer}}
+{{/if}}
