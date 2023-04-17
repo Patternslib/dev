@@ -88,16 +88,16 @@ endef
 prepare-release:
 	@# Get the current package version.
 	$(eval CURRENT_VERSION := $(shell node -p "require('./package.json').version"))
-ifeq ($(LEVEL),$(filter $(LEVEL), alpha beta))
-	@# case alpha or beta pre-release
+ifneq ($(strip $(PRELEVEL)),)
+	@# case PRELEVEL not empty which is alpha or beta pre-release
 
 	@# Changelog for the GitHub release when doing prereleases:
 	@# Include all the changes since the previous pre- or regular release.
 	$(eval RELEASE_IT_GITHUB_OPTIONS := "")
 	@# Set level argument for release-it.
-	$(eval RELEASE_IT_LEVEL := "--preRelease=$(LEVEL)")
+	$(eval RELEASE_IT_LEVEL := "$(LEVEL) --preRelease=$(PRELEVEL)")
 	@# Get the next version via semver.
-	$(eval NEXT_VERSION := $(shell npx semver --increment prerelease --preid $(LEVEL) $(CURRENT_VERSION)))
+	$(eval NEXT_VERSION := $(shell npx semver --increment pre$(LEVEL) --preid $(PRELEVEL) $(CURRENT_VERSION)))
 else
 	@# case normal major/minor/patch release
 
@@ -162,15 +162,33 @@ release-minor:
 release-patch:
 	make LEVEL=patch release
 
+# Alpha releases
 
-.PHONY: prerelease-alpha
-prerelease-alpha:
-	make LEVEL=alpha release
+.PHONY: prerelease-major-alpha
+prerelease-major-alpha:
+	make LEVEL=major PRELEVEL=alpha release
 
+.PHONY: prerelease-minor-alpha
+prerelease-minor-alpha:
+	make LEVEL=minor PRELEVEL=alpha release
 
-.PHONY: prerelease-beta
-prerelease-beta:
-	make LEVEL=beta release
+.PHONY: prerelease-patch-alpha
+prerelease-patch-alpha:
+	make LEVEL=patch PRELEVEL=alpha release
+
+# Beta releases
+
+.PHONY: prerelease-major-beta
+prerelease-major-beta:
+	make LEVEL=major PRELEVEL=beta release
+
+.PHONY: prerelease-minor-beta
+prerelease-minor-beta:
+	make LEVEL=minor PRELEVEL=beta release
+
+.PHONY: prerelease-patch-beta
+prerelease-patch-beta:
+	make LEVEL=patch PRELEVEL=beta release
 
 
 .PHONY: serve
