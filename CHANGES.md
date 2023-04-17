@@ -29,6 +29,33 @@ previous regular release is useful for the GitHub release page only.
 
 * Update dependencies. ([b02c37b](https://github.com/patternslib/dev/commit/b02c37b0a41a347f955a7a7a8fb47d8e1f4c4f11))
 
+## [3.1.13](https://github.com/patternslib/dev/compare/3.1.12...3.1.13) (2023-04-17)
+
+
+### Bug Fixes
+
+
+* Improve the release-it commit template to include a newline between each commit and add any commit references to the end. ([1603d0b](https://github.com/patternslib/dev/commit/1603d0b1a08aab290f021b20562c92dab45f75c1))
+
+
+* Improve the release-it commit template to include a newline between header and body text. ([14ace2b](https://github.com/patternslib/dev/commit/14ace2b2c2c2dd2bc77c4cd0cf9b47744d5ca1c1))
+
+
+* Include all changes since last regular release only in GitHub releases. ([ec86755](https://github.com/patternslib/dev/commit/ec8675589217f5c66ffcfab273942c11b845a79c))
+
+  When doing regular releases include all the changes since the last
+regular release - including changes from pre-releases in the release
+notes on GitHub, but not in the CHANGES.md file. In the CHANGES.md file
+every change can be seen at once. Including all the changes since the
+previous regular release is useful for the GitHub release page only.
+
+
+
+### Maintenance
+
+
+* Update dependencies. ([b02c37b](https://github.com/patternslib/dev/commit/b02c37b0a41a347f955a7a7a8fb47d8e1f4c4f11))
+
 ## [3.1.12](https://github.com/patternslib/dev/compare/3.1.11...3.1.12) (2023-04-03)
 
 
