@@ -91,9 +91,9 @@ prepare-release:
 ifeq ($(LEVEL),$(filter $(LEVEL), alpha beta))
 	@# case alpha or beta pre-release
 
-	@# Include all changes from the previous release in the changelog by using
-	@# the release-it default setting.
-	$(eval RELEASE_IT_EXTRA_OPTIONS := "")
+	@# Changelog for the GitHub release when doing prereleases:
+	@# Include all the changes since the previous pre- or regular release.
+	$(eval RELEASE_IT_GITHUB_OPTIONS := "")
 	@# Set level argument for release-it.
 	$(eval RELEASE_IT_LEVEL := "--preRelease=$(LEVEL)")
 	@# Get the next version via semver.
@@ -101,9 +101,11 @@ ifeq ($(LEVEL),$(filter $(LEVEL), alpha beta))
 else
 	@# case normal major/minor/patch release
 
-	@# Include all changes from the previous non-prerelease in the changelog.
+	@# Changelog for the GitHub release when doing regular releases:
+	@# Include all changes since the previous regular release, also including
+	@# changes from pre-releases.
 	@# See: https://github.com/release-it/release-it/blob/master/docs/pre-releases.md
-	$(eval RELEASE_IT_EXTRA_OPTIONS := "--git.tagExclude='*[-]*'")
+	$(eval RELEASE_IT_GITHUB_OPTIONS := "--git.tagExclude='*[-]*'")
 	@# Set level argument for release-it.
 	$(eval RELEASE_IT_LEVEL := $(LEVEL))
 	@# Get the next version via semver.
@@ -129,7 +131,7 @@ release: clean install check prepare-release release-zip
 	@# 1) Release on npm.
 	@# 2) When successful, update release on GitHub
 	@# 3) Checkout CHANGES.md, which was modified by step 2)
-	npx release-it $(RELEASE_IT_LEVEL) $(RELEASE_IT_EXTRA_OPTIONS) \
+	npx release-it $(RELEASE_IT_LEVEL) \
 		&& npx release-it \
 			--github.release \
 			--github.update \
@@ -138,6 +140,7 @@ release: clean install check prepare-release release-zip
 			--no-github.draft \
 			--no-git \
 			--no-npm \
+			$(RELEASE_IT_GITHUB_OPTIONS) \
 		&& git checkout CHANGES.md
 
 	@# Remove the bundle from release-zip again.
