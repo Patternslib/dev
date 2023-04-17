@@ -2,6 +2,27 @@
 
 
 
+## [3.3.0](https://github.com/patternslib/dev/compare/3.2.0...3.3.0) (2023-04-17)
+
+
+### Bug Fixes
+
+
+* Simplify release make commands. ([49077d2](https://github.com/patternslib/dev/commit/49077d2c6d79d7b98898c6576d0aaa01e003a0d6))
+
+  Change the prerelease commands back to pre-3.2.0 names.
+This was necessary because the previous change did create for each
+command a new increment, which was not what we wanted.
+Instead the Makefile is now restructured:
+- First the npm release is done and the package.json written with the
+  correct version. If no increment is given (in case of the prerelease
+  targets) an interactive prompt asks the user to define one.
+- Second the GitHub release is done. It's no more necessary to guess the
+  next version before the npm version was done. Instead we now rely on
+  release-it choosing it for us.
+Now we do have again the "prerelease-alpha" and "prerelease-beta"
+Makefile targets.
+
 ## [3.2.0](https://github.com/patternslib/dev/compare/3.1.13...3.2.0) (2023-04-17)
 
 
