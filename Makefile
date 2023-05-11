@@ -111,13 +111,13 @@ release-github: prepare-release release-zip
 	@# NOTE: PACKAGE_VERSION is defined in release-zip
 
 	npx release-it \
+			--no-increment \
+			--no-git \
+			--no-npm \
 			--github.release \
 			--github.update \
 			--github.assets=$(BUNDLE_NAME)-bundle-$(PACKAGE_VERSION).zip \
-			--no-increment \
 			--no-github.draft \
-			--no-git \
-			--no-npm \
 			$(RELEASE_IT_GITHUB_OPTIONS)
 
 	@# Checkout CHANGES.md, which was modified just before
