@@ -26,6 +26,30 @@ Now you can again reference jsdelivr and and unpkg to include bundles.
 
 * Upgrade dependencies. ([6d052b7](https://github.com/patternslib/dev/commit/6d052b7d6d7cbc52812d8483dd713d336c11aa54))
 
+## [3.3.3](https://github.com/patternslib/dev/compare/3.3.2...3.3.3) (2023-05-28)
+
+
+### Bug Fixes
+
+
+* Add pre-built bundles to the npm distribution again. ([c85dbdc](https://github.com/patternslib/dev/commit/c85dbdc22cf3a29017677020fcd8e2acc65803b7))
+
+  This was lost in a previous Makefile update.
+Now you can again reference jsdelivr and and unpkg to include bundles.
+
+
+* Change optional chaining babel plugin name. ([e57793a](https://github.com/patternslib/dev/commit/e57793a4abf59d3859aaa8ba757cbd0d41871396))
+
+
+
+### Maintenance
+
+
+* Remove dependency on semver which is not needed since the recent Makefile improvements. ([1dd1c3a](https://github.com/patternslib/dev/commit/1dd1c3afc1494634f5a8f72f30c4ba5a138376b8))
+
+
+* Upgrade dependencies. ([6d052b7](https://github.com/patternslib/dev/commit/6d052b7d6d7cbc52812d8483dd713d336c11aa54))
+
 ## [3.3.2](https://github.com/patternslib/dev/compare/3.3.1...3.3.2) (2023-05-11)
 
 
