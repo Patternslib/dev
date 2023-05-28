@@ -26,7 +26,7 @@ module.exports = (env) => {
                     },
                 ],
             ],
-            plugins: ["@babel/plugin-proposal-optional-chaining"],
+            plugins: ["@babel/plugin-transform-optional-chaining"],
         };
     }
 

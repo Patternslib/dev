@@ -56,7 +56,7 @@ bundle-pre:
 
 # Compile the bundle.
 .PHONY: bundle
-bundle: bundle-pre stamp-yarn
+bundle: clean-dist bundle-pre stamp-yarn
 ifneq "$(PACKAGE_NAME)" "$(PACKAGE_DEV)"
 	@# Do not build a bundle for @patternslib/dev
 	$(YARN) run build
@@ -64,7 +64,7 @@ endif
 
 
 # Create a ZIP file from the bundle which is uploaded to the GitHub release tag.
-release-zip: clean-dist bundle
+release-zip:
 ifneq "$(PACKAGE_NAME)" "$(PACKAGE_DEV)"
 	@# Do not create a zip release for @patternslib/dev
 	$(eval PACKAGE_VERSION := $(shell node -p "require('./package.json').version"))
@@ -128,7 +128,7 @@ release-github: prepare-release release-zip
 	-rm $(BUNDLE_NAME)-bundle-$(PACKAGE_VERSION).zip
 
 
-release: clean install check release-npm release-github
+release: clean install check bundle release-npm release-github
 	@# Note: If you want to include the compiled bundle in your npm package you
 	@#       have to allow it in a .npmignore file.
 
