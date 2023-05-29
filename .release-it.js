@@ -45,13 +45,13 @@ module.exports = {
             writerOpts: {
                 commitPartial: commits_template,
             },
-            hooks: {
-                // Run `make build` after the version is bumped to get a build
-                // with the new version number comment in the entry scripts.
-                // Use the make target which does a check to not build if the
-                // package is this `@patternslib/dev` package.
-                "after:bump": "make build",
-            },
         },
+    },
+    hooks: {
+        // Run `make bundle` after the version is bumped to get a build with
+        // the new version number comment in the entry scripts.
+        // Use the make target which does a check to not build if the package
+        // is this `@patternslib/dev` package.
+        "after:bump": "make bundle",
     },
 };
