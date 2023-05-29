@@ -55,6 +55,8 @@ bundle-pre:
 
 
 # Compile the bundle.
+# NOTE: When using the normal workflow - e.g. `make release-minor`, the
+# relase-it config runs `make build` after the version bump.
 .PHONY: bundle
 bundle: clean-dist bundle-pre stamp-yarn
 ifneq "$(PACKAGE_NAME)" "$(PACKAGE_DEV)"
@@ -128,7 +130,7 @@ release-github: prepare-release release-zip
 	-rm $(BUNDLE_NAME)-bundle-$(PACKAGE_VERSION).zip
 
 
-release: clean install check bundle release-npm release-github
+release: clean install check release-npm release-github
 	@# Note: If you want to include the compiled bundle in your npm package you
 	@#       have to allow it in a .npmignore file.
 
