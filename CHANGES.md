@@ -21,6 +21,25 @@ Use release-it hooks to do that.
 
 * Upgrade dependencies. ([56eda65](https://github.com/patternslib/dev/commit/56eda655d463fa8c0e3fb36a4b35d258a22bf815))
 
+## [3.3.4](https://github.com/patternslib/dev/compare/3.3.3...3.3.4) (2023-05-29)
+
+
+### Bug Fixes
+
+
+* Include the correct bundle version in entry file header comment. ([ea32b4d](https://github.com/patternslib/dev/commit/ea32b4dd9e6bc02fcbc4011798174eb0e057dd82))
+
+  In order to have the correct version specifier in the bundle's entry
+script header comment the bundle must be built after the version bump.
+Use release-it hooks to do that.
+
+
+
+### Maintenance
+
+
+* Upgrade dependencies. ([56eda65](https://github.com/patternslib/dev/commit/56eda655d463fa8c0e3fb36a4b35d258a22bf815))
+
 ## [3.3.3](https://github.com/patternslib/dev/compare/3.3.2...3.3.3) (2023-05-28)
 
 
