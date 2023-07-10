@@ -18,34 +18,37 @@ PACKAGE_DEV=@patternslib/dev
 PACKAGE_NAME := $(shell node -p "require('./package.json').name")
 BUNDLE_NAME := $(subst @patternslib/,,$(subst @plone/,,$(PACKAGE_NAME)))
 
-.PHONY: install
-stamp-yarn install:
-	$(YARN) install
+
+install-husky .husky/_/husky.sh:
+	@echo DEBUG: install husky
 	# Install pre commit hook
 	$(YARN) husky install
-	touch stamp-yarn
 
 
-clean-dist:
+install node_modules/: yarn.lock install-husky
+	@echo DEBUG: install
+	$(YARN) install
+
+
+clean-dist dist/: package.json
 	rm -Rf dist/
 
 
-.PHONY: clean
-clean: clean-dist
-	rm -f stamp-yarn
+clean node_modules/: yarn.lock clean-dist
 	rm -Rf node_modules/
 
 
 .PHONY: eslint
-eslint: stamp-yarn
+eslint: install
 	$(ESLINT) ./src
 
 
 .PHONY: check
-check: stamp-yarn eslint
+check: install eslint
 	$(YARN) run test
 
 
+.PHONY: bundle-pre
 bundle-pre:
 	@# Override this in your project to add some tasks before the bundle is built.
 	@# Example: Unlink any linked dependencies.
@@ -57,8 +60,7 @@ bundle-pre:
 # Compile the bundle.
 # NOTE: When using the normal workflow - e.g. `make release-minor`, the
 # relase-it config runs `make build` after the version bump.
-.PHONY: bundle
-bundle: clean-dist bundle-pre stamp-yarn
+bundle dist/: package.json clean-dist bundle-pre install
 ifneq "$(PACKAGE_NAME)" "$(PACKAGE_DEV)"
 	@# Do not build a bundle for @patternslib/dev
 	$(YARN) run build
@@ -66,7 +68,7 @@ endif
 
 
 # Create a ZIP file from the bundle which is uploaded to the GitHub release tag.
-release-zip:
+release-zip $(BUNDLE_NAME)-bundle-$(PACKAGE_VERSION).zip:
 ifneq "$(PACKAGE_NAME)" "$(PACKAGE_DEV)"
 	@# Do not create a zip release for @patternslib/dev
 	$(eval PACKAGE_VERSION := $(shell node -p "require('./package.json').version"))
@@ -104,17 +106,18 @@ endif
 
 
 # Do the npm release.
-release-npm: prepare-release
+release-npm: prepare-release build
 	npx release-it $(RELEASE_IT_LEVEL)
 
 
 # Do the GitHub release.
-release-github: prepare-release release-zip
+release-github: prepare-release build release-zip
 	@# NOTE: PACKAGE_VERSION is defined in release-zip
 
 	npx release-it \
 			--no-increment \
 			--no-git \
+			--no-git.tag \
 			--no-npm \
 			--github.release \
 			--github.update \
