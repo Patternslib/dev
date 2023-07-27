@@ -13,6 +13,17 @@
 
 * Upgrade dependencies. ([b3bb92f](https://github.com/patternslib/dev/commit/b3bb92f0e78c723fb20950e0a47404d9fd2f47af))
 
+## [3.4.0](https://github.com/patternslib/dev/compare/3.3.5...3.4.0) (2023-07-27)
+
+
+### Maintenance
+
+
+* Depend on the minimum actively maintained Node.js version >= 16. ([603a024](https://github.com/patternslib/dev/commit/603a024f1962d7731d8aa09457c90c48c73f2302))
+
+
+* Upgrade dependencies. ([b3bb92f](https://github.com/patternslib/dev/commit/b3bb92f0e78c723fb20950e0a47404d9fd2f47af))
+
 ## [3.3.5](https://github.com/patternslib/dev/compare/3.3.4...3.3.5) (2023-05-29)
 
 
