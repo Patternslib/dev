@@ -56,7 +56,7 @@ bundle-pre:
 
 # Compile the bundle.
 # NOTE: When using the normal workflow - e.g. `make release-minor`, the
-# relase-it config runs `make build` after the version bump.
+# relase-it config runs `make bundle` after the version bump.
 .PHONY: bundle
 bundle: clean-dist bundle-pre stamp-yarn
 ifneq "$(PACKAGE_NAME)" "$(PACKAGE_DEV)"
