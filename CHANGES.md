@@ -1,22 +1,6 @@
 # Changelog
 
 
-
-## [3.4.1](https://github.com/patternslib/dev/compare/3.4.0...3.4.1) (2023-08-11)
-
-
-### Bug Fixes
-
-
-* Correct comment in Makefile. ([5fb33c6](https://github.com/patternslib/dev/commit/5fb33c6f94464c8df5678556197bac4692d6b878))
-
-
-
-### Maintenance
-
-
-* Upgrade dependencies. ([4fcf179](https://github.com/patternslib/dev/commit/4fcf1791317ad8bc6b06cc1406eeb5672c3e2a4d))
-
 ## [3.4.1](https://github.com/patternslib/dev/compare/3.4.0...3.4.1) (2023-08-11)
 
 
