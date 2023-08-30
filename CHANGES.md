@@ -1,22 +1,6 @@
 # Changelog
 
 
-
-## [3.5.0](https://github.com/patternslib/dev/compare/3.4.1...3.5.0) (2023-08-30)
-
-
-### Features
-
-
-* **Tests:** Add helper for conditional test skipping and node version parsing. ([611b77b](https://github.com/patternslib/dev/commit/611b77b2b4469226ebcf942e5b68851e7927c630))
-
-
-
-### Maintenance
-
-
-* Upgrade dependencies. ([1e146a9](https://github.com/patternslib/dev/commit/1e146a99047786ffbf69cc0da97763885af3736f))
-
 ## [3.5.0](https://github.com/patternslib/dev/compare/3.4.1...3.5.0) (2023-08-30)
 
 
