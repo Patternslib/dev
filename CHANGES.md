@@ -10,6 +10,14 @@
 
 * Upgrade dependencies. ([b1ffc64](https://github.com/patternslib/dev/commit/b1ffc6453551b7312e4643f4f6aa679286baa379))
 
+## [3.5.1](https://github.com/patternslib/dev/compare/3.5.0...3.5.1) (2023-09-23)
+
+
+### Maintenance
+
+
+* Upgrade dependencies. ([b1ffc64](https://github.com/patternslib/dev/commit/b1ffc6453551b7312e4643f4f6aa679286baa379))
+
 ## [3.5.0](https://github.com/patternslib/dev/compare/3.4.1...3.5.0) (2023-08-30)
 
 
