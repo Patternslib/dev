@@ -1,6 +1,63 @@
 # Changelog
 
 
+## [3.5.2](https://github.com/patternslib/dev/compare/3.5.1...3.5.2) (2023-10-16)
+
+
+### Maintenance
+
+
+* Upgrade dependencies. ([e5fb5b8](https://github.com/patternslib/dev/commit/e5fb5b8bb004eb5990d6326fe93d8ed02cbbf362))
+
+## [3.5.1](https://github.com/patternslib/dev/compare/3.5.0...3.5.1) (2023-09-23)
+
+
+### Maintenance
+
+
+* Upgrade dependencies. ([b1ffc64](https://github.com/patternslib/dev/commit/b1ffc6453551b7312e4643f4f6aa679286baa379))
+
+## [3.5.0](https://github.com/patternslib/dev/compare/3.4.1...3.5.0) (2023-08-30)
+
+
+### Features
+
+
+* **Tests:** Add helper for conditional test skipping and node version parsing. ([611b77b](https://github.com/patternslib/dev/commit/611b77b2b4469226ebcf942e5b68851e7927c630))
+
+
+
+### Maintenance
+
+
+* Upgrade dependencies. ([1e146a9](https://github.com/patternslib/dev/commit/1e146a99047786ffbf69cc0da97763885af3736f))
+
+## [3.4.1](https://github.com/patternslib/dev/compare/3.4.0...3.4.1) (2023-08-11)
+
+
+### Bug Fixes
+
+
+* Correct comment in Makefile. ([5fb33c6](https://github.com/patternslib/dev/commit/5fb33c6f94464c8df5678556197bac4692d6b878))
+
+
+
+### Maintenance
+
+
+* Upgrade dependencies. ([4fcf179](https://github.com/patternslib/dev/commit/4fcf1791317ad8bc6b06cc1406eeb5672c3e2a4d))
+
+## [3.4.0](https://github.com/patternslib/dev/compare/3.3.5...3.4.0) (2023-07-27)
+
+
+### Maintenance
+
+
+* Depend on the minimum actively maintained Node.js version >= 16. ([603a024](https://github.com/patternslib/dev/commit/603a024f1962d7731d8aa09457c90c48c73f2302))
+
+
+* Upgrade dependencies. ([b3bb92f](https://github.com/patternslib/dev/commit/b3bb92f0e78c723fb20950e0a47404d9fd2f47af))
+
 
 ## [3.3.5](https://github.com/patternslib/dev/compare/3.3.4...3.3.5) (2023-05-29)
 
@@ -10,13 +67,6 @@
 
 * Fix hook config from 3.3.4. ([b4f02f6](https://github.com/patternslib/dev/commit/b4f02f69fda38b8c6a0ef8402511fc8cd87eff9d))
 
-## [3.3.5](https://github.com/patternslib/dev/compare/3.3.4...3.3.5) (2023-05-29)
-
-
-### Bug Fixes
-
-
-* Fix hook config from 3.3.4. ([b4f02f6](https://github.com/patternslib/dev/commit/b4f02f69fda38b8c6a0ef8402511fc8cd87eff9d))
 
 ## [3.3.4](https://github.com/patternslib/dev/compare/3.3.3...3.3.4) (2023-05-29)
 

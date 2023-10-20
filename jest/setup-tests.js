@@ -1,6 +1,44 @@
 // need this for async/await in tests
 import "regenerator-runtime/runtime";
 
+/**
+ * Return the node version.
+ *
+ * See: https://stackoverflow.com/a/20798760/1337474
+ *
+ * @returns {object} - The node version. { version, major, minor, patch }
+ *
+ * @example
+ * global.node_version().major >= 19 // true if node version is >= 19
+ * global.node_version().version // "v14.17.0"
+ */
+global.node_version = () => {
+    const parsed_version = process.version.match(/^v(\d+)\.(\d+)\.(\d+)/);
+    console.log(parsed_version);
+    return {
+        version: parsed_version[0],
+        major: parseInt(parsed_version[1]),
+        minor: parseInt(parsed_version[2]),
+        patch: parseInt(parsed_version[3]),
+    };
+};
+
+/**
+ * Conditional Jest tests
+ *
+ * See: https://stackoverflow.com/a/60438234/1337474
+ *
+ * @param {boolean} condition - The condition to test.
+ * @returns {function} - it or it.skip
+ *
+ * @example
+ *
+ * global.itif(global.node_version().major >= 19)("should do something", () => {
+ *      // test code
+ * });
+ */
+global.itif = (condition) => (condition ? it : it.skip);
+
 // pat-fullscreen
 document.requestFullscreen = jest.fn();
 document.exitFullscreen = jest.fn();
