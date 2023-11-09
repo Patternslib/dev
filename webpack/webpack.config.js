@@ -89,12 +89,12 @@ const config_factory = (env, argv, config, babel_include = [], package_json) => 
     };
 
     if (package_json && package_json.version && package_json.name) {
-        // Add a banner to generated chunks with the bundle name and version.
+        // Add a banner to the generated bundle with the bundle name and version.
         base_config.plugins.push(
             new webpack.BannerPlugin({
                 banner: `${package_json.name} ${package_json.version}`,
                 entryOnly: true,
-            })
+            }),
         );
     }
 
