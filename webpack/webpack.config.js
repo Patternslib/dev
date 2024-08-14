@@ -72,7 +72,7 @@ const config_factory = (env, argv, config, babel_include = [], package_json) => 
                     type: "asset/source",
                 },
                 {
-                    test: /\.(eot|woff|woff2|ttf|png|jpe?g|gif)$/i,
+                    test: /\.(eot|woff|woff2|ttf|png|jpe?g|gif|webp)$/i,
                     type: "asset/resource",
                 },
             ],
