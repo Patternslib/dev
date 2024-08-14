@@ -49,6 +49,53 @@ Note: As time of this commit, versions below 18 are unmaintained.
 
 * Upgrade GitHub Actions. ([f687bee](https://github.com/patternslib/dev/commit/f687bee3dcd94b50b14fd5df3370aa9ecf245943))
 
+## [3.6.0](https://github.com/patternslib/dev/compare/3.5.3...3.6.0) (2024-08-14)
+
+
+### Features
+
+
+* Add husky commitlint also to this package. ([1bdcf63](https://github.com/patternslib/dev/commit/1bdcf636324a0a05946754af84faa78c4c7f71f4))
+
+
+* Add WebP as asset/resource along to the other formats for the Webpack loader. ([58f369c](https://github.com/patternslib/dev/commit/58f369c256eadd3f631f0ea79ed509a93fdfd3d1))
+
+
+
+### Bug Fixes
+
+
+* Do not upgrade husky and keep at pre 9.x. ([fe89852](https://github.com/patternslib/dev/commit/fe8985223c11cc4258e44e475aeebaa1926ed327))
+
+  Husky has some breaking changes which we should only upgrade with the next major release of @patternslib/dev.
+
+
+* Require minimum node v18.18. ([807147a](https://github.com/patternslib/dev/commit/807147a98527520b7455061629a04ebac6941740))
+
+  This is Webpack's minimum required version.
+Note: As time of this commit, versions below 18 are unmaintained.
+
+
+
+### Maintenance
+
+
+* Remove plugin-transform-optional-chaining from babel. ([9facee8](https://github.com/patternslib/dev/commit/9facee8b35a9f09c24c6e466228503d0a257445b))
+
+  The optional chaining feature is already included in preset-env ES2020.
+
+
+* Upgrade dependencies. ([c3d64fd](https://github.com/patternslib/dev/commit/c3d64fdd0c543e199e04088fc661c7bd9315bbe3))
+
+  Upgrade all except eslint, which needs to migrate from `.eslintrc.js` to
+`eslint.config.js`. This will be done in an upcoming major release.
+
+
+* Upgrade GitHub Actions node version. ([4c96faa](https://github.com/patternslib/dev/commit/4c96faa2e34b4fdf50d2d38b6a230704f7d9c7ed))
+
+
+* Upgrade GitHub Actions. ([f687bee](https://github.com/patternslib/dev/commit/f687bee3dcd94b50b14fd5df3370aa9ecf245943))
+
 ## [3.5.3](https://github.com/patternslib/dev/compare/3.5.2...3.5.3) (2023-11-22)
 
 
