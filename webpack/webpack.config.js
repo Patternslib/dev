@@ -1,6 +1,5 @@
 process.traceDeprecation = true;
 const webpack = require("webpack");
-const webpack_helpers = require("./webpack-helpers");
 
 // plugins
 const TerserPlugin = require("terser-webpack-plugin");
@@ -60,7 +59,7 @@ const config_factory = (env, argv, config, babel_include = [], package_json) => 
                         {
                             loader: "style-loader",
                             options: {
-                                insert: webpack_helpers.top_head_insert,
+                                insert: require.resolve("./style-inserter"),
                             },
                         },
                         "css-loader",
