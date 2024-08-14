@@ -1,7 +1,6 @@
 # Changelog
 
 
-
 ## [3.6.1](https://github.com/patternslib/dev/compare/3.6.0...3.6.1) (2024-08-14)
 
 
@@ -13,16 +12,6 @@
   Webpack style loader's insert option needs a different way to reference functions.
 Also deprecate webpack-helpers module.
 
-## [3.6.1](https://github.com/patternslib/dev/compare/3.6.0...3.6.1) (2024-08-14)
-
-
-### Bug Fixes
-
-
-* Webpack style loader. ([ecec3cf](https://github.com/patternslib/dev/commit/ecec3cf5654050c8ec96a924fcaa8bad618d526c))
-
-  Webpack style loader's insert option needs a different way to reference functions.
-Also deprecate webpack-helpers module.
 
 ## [3.6.0](https://github.com/patternslib/dev/compare/3.5.3...3.6.0) (2024-08-14)
 
