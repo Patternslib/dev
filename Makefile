@@ -113,8 +113,12 @@ release-github: prepare-release release-zip
 	@# NOTE: PACKAGE_VERSION is defined in release-zip
 
 	npx release-it \
+			--dry-run \
 			--no-increment \
-			--no-git \
+			--git.changelog="" \
+			--git.commit=false \
+			--git.push=false \
+			--git.tag=false \
 			--no-npm \
 			--github.release \
 			--github.update \
