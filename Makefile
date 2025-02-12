@@ -18,11 +18,10 @@ PACKAGE_DEV=@patternslib/dev
 PACKAGE_NAME := $(shell node -p "require('./package.json').name")
 BUNDLE_NAME := $(subst @patternslib/,,$(subst @plone/,,$(PACKAGE_NAME)))
 
-.PHONY: install
 stamp-yarn install:
 	$(YARN) install
-	# Install pre commit hook
-	$(YARN) husky install
+	# Run husky once to initialize the `.husky/_` directory.
+	npx husky
 	touch stamp-yarn
 
 
