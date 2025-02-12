@@ -26,6 +26,7 @@ stamp-yarn install:
 	touch stamp-yarn
 
 
+.PHONY: clean
 clean-dist:
 	rm -Rf dist/
 
@@ -46,6 +47,7 @@ check: stamp-yarn eslint
 	$(YARN) run test
 
 
+.PHONY: bundle-pre
 bundle-pre:
 	@# Override this in your project to add some tasks before the bundle is built.
 	@# Example: Unlink any linked dependencies.
@@ -66,6 +68,7 @@ endif
 
 
 # Create a ZIP file from the bundle which is uploaded to the GitHub release tag.
+.PHONY: release-zip
 release-zip:
 ifneq "$(PACKAGE_NAME)" "$(PACKAGE_DEV)"
 	@# Do not create a zip release for @patternslib/dev
@@ -79,6 +82,7 @@ endif
 
 
 # Prepare some necessary variables.
+.PHONY: prepare-release
 prepare-release:
 ifeq ($(LEVEL),$(filter $(LEVEL), alpha beta))
 	@# case alpha or beta pre-release
@@ -104,11 +108,13 @@ endif
 
 
 # Do the npm release.
+.PHONY: release-npm
 release-npm: prepare-release
 	npx release-it $(RELEASE_IT_LEVEL)
 
 
 # Do the GitHub release.
+.PHONY: release-github
 release-github: prepare-release release-zip
 	@# NOTE: PACKAGE_VERSION is defined in release-zip
 
@@ -130,6 +136,7 @@ release-github: prepare-release release-zip
 	-rm $(BUNDLE_NAME)-bundle-$(PACKAGE_VERSION).zip
 
 
+.PHONY: release
 release: clean install check release-npm release-github
 	@# Note: If you want to include the compiled bundle in your npm package you
 	@#       have to allow it in a .npmignore file.
