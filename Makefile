@@ -19,10 +19,13 @@ PACKAGE_NAME := $(shell node -p "require('./package.json').name")
 BUNDLE_NAME := $(subst @patternslib/,,$(subst @plone/,,$(PACKAGE_NAME)))
 
 
-yarn.lock install:
+yarn.lock install: .git/hooks/commit-msg
 	$(YARN) install
-	# Install pre commit hook
-	$(YARN) husky install
+
+
+.git/hooks/commit-msg:
+	echo "npx commitlint --edit" > .git/hooks/commit-msg
+	chmod u+x .git/hooks/commit-msg
 
 
 .PHONY: clean
