@@ -18,12 +18,11 @@ PACKAGE_DEV=@patternslib/dev
 PACKAGE_NAME := $(shell node -p "require('./package.json').name")
 BUNDLE_NAME := $(subst @patternslib/,,$(subst @plone/,,$(PACKAGE_NAME)))
 
-.PHONY: install
-stamp-yarn install:
+
+yarn.lock install:
 	$(YARN) install
 	# Install pre commit hook
 	$(YARN) husky install
-	touch stamp-yarn
 
 
 .PHONY: clean
@@ -33,17 +32,16 @@ clean-dist:
 
 .PHONY: clean
 clean: clean-dist
-	rm -f stamp-yarn
 	rm -Rf node_modules/
 
 
 .PHONY: eslint
-eslint: stamp-yarn
+eslint: install
 	$(ESLINT) ./src
 
 
 .PHONY: check
-check: stamp-yarn eslint
+check: install eslint
 	$(YARN) run test
 
 
@@ -60,7 +58,7 @@ bundle-pre:
 # NOTE: When using the normal workflow - e.g. `make release-minor`, the
 # relase-it config runs `make bundle` after the version bump.
 .PHONY: bundle
-bundle: clean-dist bundle-pre stamp-yarn
+bundle: clean-dist bundle-pre install
 ifneq "$(PACKAGE_NAME)" "$(PACKAGE_DEV)"
 	@# Do not build a bundle for @patternslib/dev
 	$(YARN) run build
@@ -166,7 +164,7 @@ prerelease-beta:
 
 
 .PHONY: serve
-serve: stamp-yarn
+serve: install
 	$(YARN) run start
 
 
