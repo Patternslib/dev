@@ -18,34 +18,37 @@ PACKAGE_DEV=@patternslib/dev
 PACKAGE_NAME := $(shell node -p "require('./package.json').name")
 BUNDLE_NAME := $(subst @patternslib/,,$(subst @plone/,,$(PACKAGE_NAME)))
 
-.PHONY: install
-stamp-yarn install:
+
+yarn.lock install: .git/hooks/commit-msg
 	$(YARN) install
-	# Install pre commit hook
-	$(YARN) husky install
-	touch stamp-yarn
 
 
+.git/hooks/commit-msg:
+	echo "npx commitlint --edit" > .git/hooks/commit-msg
+	chmod u+x .git/hooks/commit-msg
+
+
+.PHONY: clean
 clean-dist:
 	rm -Rf dist/
 
 
 .PHONY: clean
 clean: clean-dist
-	rm -f stamp-yarn
 	rm -Rf node_modules/
 
 
 .PHONY: eslint
-eslint: stamp-yarn
+eslint: install
 	$(ESLINT) ./src
 
 
 .PHONY: check
-check: stamp-yarn eslint
+check: install eslint
 	$(YARN) run test
 
 
+.PHONY: bundle-pre
 bundle-pre:
 	@# Override this in your project to add some tasks before the bundle is built.
 	@# Example: Unlink any linked dependencies.
@@ -58,7 +61,7 @@ bundle-pre:
 # NOTE: When using the normal workflow - e.g. `make release-minor`, the
 # relase-it config runs `make bundle` after the version bump.
 .PHONY: bundle
-bundle: clean-dist bundle-pre stamp-yarn
+bundle: clean-dist bundle-pre install
 ifneq "$(PACKAGE_NAME)" "$(PACKAGE_DEV)"
 	@# Do not build a bundle for @patternslib/dev
 	$(YARN) run build
@@ -66,6 +69,7 @@ endif
 
 
 # Create a ZIP file from the bundle which is uploaded to the GitHub release tag.
+.PHONY: release-zip
 release-zip:
 ifneq "$(PACKAGE_NAME)" "$(PACKAGE_DEV)"
 	@# Do not create a zip release for @patternslib/dev
@@ -79,6 +83,7 @@ endif
 
 
 # Prepare some necessary variables.
+.PHONY: prepare-release
 prepare-release:
 ifeq ($(LEVEL),$(filter $(LEVEL), alpha beta))
 	@# case alpha or beta pre-release
@@ -104,11 +109,13 @@ endif
 
 
 # Do the npm release.
+.PHONY: release-npm
 release-npm: prepare-release
 	npx release-it $(RELEASE_IT_LEVEL)
 
 
 # Do the GitHub release.
+.PHONY: release-github
 release-github: prepare-release release-zip
 	@# NOTE: PACKAGE_VERSION is defined in release-zip
 
@@ -130,6 +137,7 @@ release-github: prepare-release release-zip
 	-rm $(BUNDLE_NAME)-bundle-$(PACKAGE_VERSION).zip
 
 
+.PHONY: release
 release: clean install check release-npm release-github
 	@# Note: If you want to include the compiled bundle in your npm package you
 	@#       have to allow it in a .npmignore file.
@@ -159,7 +167,7 @@ prerelease-beta:
 
 
 .PHONY: serve
-serve: stamp-yarn
+serve: install
 	$(YARN) run start
 
 
