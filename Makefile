@@ -171,4 +171,31 @@ serve: install
 	$(YARN) run start
 
 
-#
+upgrade:\
+	.git/hooks/commit-msg\
+	upgrade-remove-husky\
+	upgrade-eslint
+	@# Upgrade target, depends on other upgrades
+
+
+upgrade-remove-husky:
+	test -d .husky\
+		&& rm -R .husky\
+		&& git add .husky\
+		&& git commit -m"maint: @patternslib/dev upgrade - remove .husky directory in favor of git hooks."\
+		|| :
+	-git config --unset core.hooksPath
+
+
+eslint.config.js upgrade-eslint:
+	test -f "eslint.config.js"\
+		|| (\
+			echo 'module.exports = require("@patternslib/dev/eslint.config.js");' > eslint.config.js\
+			&& git add eslint.config.js\
+			&& git commit -m"maint: @patternslib/dev upgrade - create eslint.config.js."\
+		)
+	test -f ".eslintrc.js"\
+		&& rm .eslintrc.js\
+		&& git add .eslintrc.js\
+		&& git commit -m"maint: @patternslib/dev upgrade - remove old .eslintrc.js."\
+		|| :
