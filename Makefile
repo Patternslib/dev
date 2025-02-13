@@ -171,5 +171,16 @@ serve: install
 	$(YARN) run start
 
 
-upgrade:
+upgrade:\
+	.git/hooks/commit-msg\
+	upgrade-remove-husky
 	@# Upgrade target, depends on other upgrades
+
+
+upgrade-remove-husky:
+	test -d .husky\
+		&& rm -R .husky\
+		&& git add .husky\
+		&& git commit -m"maint: @patternslib/dev upgrade - remove .husky directory in favor of git hooks."\
+		|| :
+	-git config --unset core.hooksPath
