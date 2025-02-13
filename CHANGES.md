@@ -1,6 +1,46 @@
 # Changelog
 
 
+
+## 3.7.0 (2025-02-13)
+
+
+* Fix Changelog. ([](https://github.com/patternslib/dev/commit/7202edf))
+
+
+* Release new version. ([](https://github.com/patternslib/dev/commit/b837a68))
+
+
+* yarn install. ([](https://github.com/patternslib/dev/commit/0225956))
+
+
+* yarn install. ([](https://github.com/patternslib/dev/commit/dfe8b0a))
+
+
+* Add postinstall script to upgrade dev. ([](https://github.com/patternslib/dev/commit/16b900d))
+
+  Note: the "make upgrade" target is run in the directory where npm
+install is invoked. If you install "@patternslib/dev" as a dependency in
+"@pattersnlib/patternslib", the Patternslib project is upgraded.
+
+
+* Add upgrade to remove husky. ([](https://github.com/patternslib/dev/commit/6e3629c))
+
+
+* Directly use git's commit hooks and remove dependency on husky. ([](https://github.com/patternslib/dev/commit/ae05dd3))
+
+
+* Makefile: Define targets as phony, if they are. ([](https://github.com/patternslib/dev/commit/d4c63b7))
+
+
+* Makefile: Let the install target depend on yarn.lock file to allow reinstalls when yarn.lock changes. ([](https://github.com/patternslib/dev/commit/9de2d28))
+
+
+* Upgrade dependencies. ([](https://github.com/patternslib/dev/commit/74027e8))
+
+
+* Upgrade to eslint v9. ([](https://github.com/patternslib/dev/commit/1279e70))
+
 ## [3.6.1](https://github.com/patternslib/dev/compare/3.6.0...3.6.1) (2024-08-14)
 
 
