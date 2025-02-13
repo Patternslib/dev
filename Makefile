@@ -171,4 +171,5 @@ serve: install
 	$(YARN) run start
 
 
-#
+upgrade:
+	@# Upgrade target, depends on other upgrades

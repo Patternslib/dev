@@ -37,6 +37,7 @@
         "node": ">=18.18"
     },
     "scripts": {
+        "postinstall": "cd $INIT_CWD && make upgrade",
         "test": "jest"
     },
     "author": {
