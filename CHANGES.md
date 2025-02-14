@@ -10,6 +10,14 @@
 
 * Fix postinstall when no make upgrade is available. ([616be80](https://github.com/patternslib/dev/commit/616be8076c60fa2e4753d2d0f0fab66de94caecb))
 
+## [3.7.2](https://github.com/patternslib/dev/compare/3.7.1...3.7.2) (2025-02-14)
+
+
+### Bug Fixes
+
+
+* Fix postinstall when no make upgrade is available. ([616be80](https://github.com/patternslib/dev/commit/616be8076c60fa2e4753d2d0f0fab66de94caecb))
+
 ## [3.7.1](https://github.com/patternslib/dev/compare/3.7.0...3.7.1) (2025-02-14)
 
 
