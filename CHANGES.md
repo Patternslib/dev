@@ -1,6 +1,15 @@
 # Changelog
 
 
+
+## [3.7.1](https://github.com/patternslib/dev/compare/3.7.0...3.7.1) (2025-02-14)
+
+
+### Maintenance
+
+
+* Downgrade conventional-changelog to not break our Changelog templates. ([18aa235](https://github.com/patternslib/dev/commit/18aa235ff66d732014ce8ba2423c52d859d794d3))
+
 ## 3.7.0 (2025-02-13)
 
 
