@@ -13,17 +13,6 @@
 
 * Upgrade dependencies. ([c6fca14](https://github.com/patternslib/dev/commit/c6fca142f6f55efe1633e9eba361f4fb7f17f7f3))
 
-## [3.7.3](https://github.com/patternslib/dev/compare/3.7.2...3.7.3) (2025-04-04)
-
-
-### Maintenance
-
-
-* Upgrade dependencies. ([2a61f15](https://github.com/patternslib/dev/commit/2a61f1507eb082ab4839d093642709ad41745c58))
-
-
-* Upgrade dependencies. ([c6fca14](https://github.com/patternslib/dev/commit/c6fca142f6f55efe1633e9eba361f4fb7f17f7f3))
-
 ## [3.7.2](https://github.com/patternslib/dev/compare/3.7.1...3.7.2) (2025-02-14)
 
 
