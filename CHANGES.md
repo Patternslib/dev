@@ -2,6 +2,21 @@
 
 
 
+## [3.7.4](https://github.com/patternslib/dev/compare/3.7.3...3.7.4) (2025-05-06)
+
+### Bug Fixes
+
+
+* Pin conventional-changelog-conventionalcommits to ^8.0.0 for support of @release-it/conventional-changelog > 9. ([428f974](https://github.com/patternslib/dev/commit/428f9744dc9f0f16d0298024f40f9b0ab295aef4))
+
+  See: https://github.com/release-it/conventional-changelog/issues/110.
+
+
+### Maintenance
+
+
+* Upgrade dependencies. ([12e7f38](https://github.com/patternslib/dev/commit/12e7f388d28fd07f4cc49401ab6eb3edce177f8f))
+
 ## [3.7.3](https://github.com/patternslib/dev/compare/3.7.2...3.7.3) (2025-04-04)
 
 
