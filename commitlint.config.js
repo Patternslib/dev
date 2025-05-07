@@ -6,6 +6,6 @@ module.exports = {
         "subject-empty": [2, "never"],
         "type-case": [2, "always", "lower-case"],
         "type-empty": [2, "never"],
-        "type-enum": [2, "always", ["feat", "fix", "maint", "breaking"]],
+        "type-enum": [2, "always", ["breaking", "feat", "fix", "tech", "maint"]],
     },
 };
