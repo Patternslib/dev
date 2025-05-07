@@ -37,6 +37,10 @@ module.exports = {
                         section: "Bug Fixes",
                     },
                     {
+                        type: "tech",
+                        section: "Technical Changes",
+                    },
+                    {
                         type: "maint",
                         section: "Maintenance",
                     },
