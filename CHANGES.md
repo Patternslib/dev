@@ -2,6 +2,19 @@
 
 
 
+## [3.8.0](https://github.com/patternslib/dev/compare/3.7.4...3.8.0) (2025-05-08)
+
+### Features
+
+
+* Add new changelog category "tech" for technical changes which are not user-visible features. ([a3785df](https://github.com/patternslib/dev/commit/a3785df8e992e61bf7fbe5214d066b6cec03e069))
+
+
+### Maintenance
+
+
+* Upgrade dependencies. ([96b7bcd](https://github.com/patternslib/dev/commit/96b7bcd2f83214ac83faf041afbcb7331d9b6f7b))
+
 ## [3.7.4](https://github.com/patternslib/dev/compare/3.7.3...3.7.4) (2025-05-06)
 
 ### Bug Fixes
