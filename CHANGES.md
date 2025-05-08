@@ -2,6 +2,21 @@
 
 
 
+## [3.8.1](https://github.com/patternslib/dev/compare/3.8.0...3.8.1) (2025-05-08)
+
+
+### Maintenance
+
+
+* Downgrade @release-it/conventional-changelog to < 9 again. ([f02e92b](https://github.com/patternslib/dev/commit/f02e92bfe414f60a213f6cc2dac4c660f2686c56))
+
+  The resolutions are not passed to client packages, so we still end up
+installing conventtional-changelog-conventionalcommits 7 and 8, where we
+need only 8. Staying on @release-it/conventional-changelog version 8
+until this is fixed upstream.
+
+See: https://github.com/release-it/conventional-changelog/issues/110.
+
 ## [3.8.0](https://github.com/patternslib/dev/compare/3.7.4...3.8.0) (2025-05-08)
 
 ### Features
