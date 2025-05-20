@@ -35,7 +35,7 @@
         "yarn": "^1.22.22"
     },
     "engines": {
-        "node": ">=18.18"
+        "node": ">=22"
     },
     "scripts": {
         "postinstall": "cd $INIT_CWD && make upgrade || true",
