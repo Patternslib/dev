@@ -12,6 +12,7 @@ export
 
 
 ESLINT ?= npx eslint
+PRETTIER ?= npx prettier
 YARN   ?= npx yarn
 
 PACKAGE_DEV=@patternslib/dev
@@ -41,6 +42,11 @@ clean: clean-dist
 .PHONY: eslint
 eslint: install
 	$(ESLINT) ./src
+
+
+.PHONY: prettier
+prettier: install
+	$(PRETTIER) --write .
 
 
 .PHONY: check
