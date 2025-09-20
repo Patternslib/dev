@@ -2,6 +2,32 @@
 
 
 
+## [3.9.0-alpha.0](https://github.com/patternslib/dev/compare/3.8.1...3.9.0-alpha.0) (2025-09-20)
+
+
+### Features
+
+
+* Add prettier Makefile target to format files. ([c84e312](https://github.com/patternslib/dev/commit/c84e31255f914982c45e0025625951556df27f9e))
+
+
+
+### Maintenance
+
+
+* Install caniuse-lite and maintain it at it's latest version. ([43ebf53](https://github.com/patternslib/dev/commit/43ebf535b1b1fc6cd43bd38ad3080f3a1ce6ef7b))
+
+  Explicitly install caniuse-lite, which is used by browserslist, webpack,
+babel etc.
+This allows us to maintain it ourselves at the latest version and prevent build
+messages to update the browserslist database.
+
+
+* Update the compatible node version to the current LTS version. ([9bdc66e](https://github.com/patternslib/dev/commit/9bdc66e9b04d44c6fbb68c6ae3ab1a3165f235f6))
+
+
+* Upgrade dependencies. ([137063d](https://github.com/patternslib/dev/commit/137063d0c697c500847b315dfc89ef5799ad791d))
+
 ## [3.8.1](https://github.com/patternslib/dev/compare/3.8.0...3.8.1) (2025-05-08)
 
 
