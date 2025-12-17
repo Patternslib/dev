@@ -1,5 +1,29 @@
 # Changelog
 
+
+
+## [3.9.0-alpha.1](https://github.com/Patternslib/dev/compare/3.9.0-alpha.0...3.9.0-alpha.1) (2025-12-17)
+
+### Bug Fixes
+
+
+* Fix GLOB for JS in .editorconfig config. ([f1de9ba](https://github.com/Patternslib/dev/commit/f1de9baf27740f6f694cdc6940faaadeea0dad3f))
+
+
+### Maintenance
+
+
+* Pin conventional-changelog-conventionalcommits. ([369e6a6](https://github.com/Patternslib/dev/commit/369e6a6e8b309d6c07c69173a06f9900ba65256b))
+
+  This should solve the conventional changelog upgrade problem related to:
+https://github.com/release-it/conventional-changelog/issues/110.
+
+
+* Upgrade commitlint and conventional-changelog. ([987206d](https://github.com/Patternslib/dev/commit/987206d0305739e309108a421d87e7d401cfd4e6))
+
+
+* Upgrade dependencies. ([666d225](https://github.com/Patternslib/dev/commit/666d225c1c8a601fe39fceb65cb739460e4fc449))
+
 ## [3.9.0-alpha.0](https://github.com/patternslib/dev/compare/3.8.1...3.9.0-alpha.0) (2025-09-20)
 
 ### Features
