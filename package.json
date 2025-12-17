@@ -9,6 +9,7 @@
         "@babel/preset-env": "^7.28.5",
         "@commitlint/cli": "^20.2.0",
         "@commitlint/config-conventional": "^20.2.0",
+        "conventional-changelog-conventionalcommits": "^9.1.0",
         "@release-it/conventional-changelog": "^10.0.4",
         "babel-loader": "^10.0.0",
         "caniuse-lite": "1.0.30001760",
@@ -34,6 +35,9 @@
         "webpack-dev-server": "^5.2.2",
         "whybundled": "^2.0.0",
         "yarn": "^1.22.22"
+    },
+    "resolutions": {
+        "conventional-changelog-conventionalcommits": "9.1.0"
     },
     "engines": {
         "node": ">=22"
