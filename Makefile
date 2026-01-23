@@ -125,6 +125,9 @@ release-npm: prepare-release
 release-github: prepare-release release-zip
 	@# NOTE: PACKAGE_VERSION is defined in release-zip
 
+	@# Checkout CHANGES.md, which was modified just before
+	git checkout CHANGES.md
+
 	npx release-it \
 			--no-increment \
 			--no-git \
@@ -134,9 +137,6 @@ release-github: prepare-release release-zip
 			--github.assets=$(BUNDLE_NAME)-bundle-$(PACKAGE_VERSION).zip \
 			--no-github.draft \
 			$(RELEASE_IT_GITHUB_OPTIONS)
-
-	@# Checkout CHANGES.md, which was modified just before
-	git checkout CHANGES.md
 
 	@# Remove the bundle from release-zip again.
 	@# But don't break if it doesn't exist.
