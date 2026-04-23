@@ -5,7 +5,6 @@
     "license": "MIT",
     "dependencies": {
         "@babel/core": "^7.29.0",
-        "@babel/eslint-parser": "^7.28.6",
         "@babel/preset-env": "^7.29.2",
         "@commitlint/cli": "^20.5.0",
         "@commitlint/config-conventional": "^20.5.0",
