@@ -55,12 +55,14 @@ check: install eslint
 
 
 .PHONY: bundle-pre
-bundle-pre:
+bundle-pre::
 	@# Override this in your project to add some tasks before the bundle is built.
+	@# Please use double-colons `::` so that the base bundle-pre is also run.
 	@# Example: Unlink any linked dependencies.
-	@#     bundle-pre:
+	@#     bundle-pre::
 	@#         -yarn unlink @patternslib/patternslib
 	@#         yarn install --force
+	npx update-browserslist-db@latest
 
 
 # Compile the bundle.
