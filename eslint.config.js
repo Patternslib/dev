@@ -1,20 +1,18 @@
 const js = require("@eslint/js");
 const config_prettier = require("eslint-config-prettier");
 const globals = require("globals");
-const babel_parser = require("@babel/eslint-parser");
 
 module.exports = [
     js.configs.recommended,
     config_prettier,
     {
         languageOptions: {
-            ecmaVersion: 2022,
+            ecmaVersion: "latest",
             globals: {
                 ...globals.browser,
                 ...globals.node,
                 ...globals.jest,
             },
-            parser: babel_parser,
         },
         ignores: [
             "cache/",
@@ -33,5 +31,5 @@ module.exports = [
             "no-self-assign": 0,
             "no-useless-escape": 0,
         },
-    }
+    },
 ];
