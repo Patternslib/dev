@@ -15,7 +15,7 @@ ESLINT ?= npx eslint
 PRETTIER ?= npx prettier
 YARN   ?= npx yarn
 
-PACKAGE_DEV=@patternslib/dev
+BUILDABLE := $(shell node -p "Boolean(require('./package.json').scripts?.build)")
 PACKAGE_NAME := $(shell node -p "require('./package.json').name")
 BUNDLE_NAME := $(subst @patternslib/,,$(subst @plone/,,$(PACKAGE_NAME)))
 
@@ -70,17 +70,17 @@ bundle-pre::
 # relase-it config runs `make bundle` after the version bump.
 .PHONY: bundle
 bundle: clean-dist bundle-pre install
-ifneq "$(PACKAGE_NAME)" "$(PACKAGE_DEV)"
-	@# Do not build a bundle for @patternslib/dev
+ifeq ($(BUILDABLE),true)
 	$(YARN) run build
 endif
 
 
 # Create a ZIP file from the bundle which is uploaded to the GitHub release tag.
+# NOTE: When using the normal workflow - e.g. `make release-minor`, the
+# relase-it config runs `make release-zip` after the version bump and `make bundle`.
 .PHONY: release-zip
 release-zip:
-ifneq "$(PACKAGE_NAME)" "$(PACKAGE_DEV)"
-	@# Do not create a zip release for @patternslib/dev
+ifeq ($(BUILDABLE),true)
 	$(eval PACKAGE_VERSION := $(shell node -p "require('./package.json').version"))
 	@echo Creating $(BUNDLE_NAME)-bundle-$(PACKAGE_VERSION).zip
 	mkdir -p $(BUNDLE_NAME)-bundle-$(PACKAGE_VERSION)
@@ -98,7 +98,7 @@ ifeq ($(LEVEL),$(filter $(LEVEL), alpha beta))
 
 	@# Changelog for the GitHub release when doing prereleases:
 	@# Include all the changes since the previous pre- or regular release.
-	$(eval RELEASE_IT_GITHUB_OPTIONS := "")
+	$(eval RELEASE_IT_GITHUB_OPTIONS += "")
 
 	@# Set level argument for release-it.
 	$(eval RELEASE_IT_LEVEL := "--preRelease=$(LEVEL)")
@@ -109,46 +109,33 @@ else
 	@# Include all changes since the previous regular release, also including
 	@# changes from pre-releases.
 	@# See: https://github.com/release-it/release-it/blob/master/docs/pre-releases.md
-	$(eval RELEASE_IT_GITHUB_OPTIONS := "--git.tagExclude='*[-]*'")
+	$(eval RELEASE_IT_GITHUB_OPTIONS += "--git.tagExclude='*[-]*' \\")
 
 	@# Set level argument for release-it.
 	$(eval RELEASE_IT_LEVEL := $(LEVEL))
 endif
 
 
-# Do the npm release.
-.PHONY: release-npm
-release-npm: prepare-release
-	npx release-it $(RELEASE_IT_LEVEL)
+.PHONY: release
+release: clean install check prepare-release
+	@# Note: If you want to include the compiled bundle in your npm package you
+	@#       have to allow it in a .npmignore file.
 
-
-# Do the GitHub release.
-.PHONY: release-github
-release-github: prepare-release release-zip
-	@# NOTE: PACKAGE_VERSION is defined in release-zip
-
-	@# Checkout CHANGES.md, which was modified just before
-	git checkout CHANGES.md
+	$(eval PACKAGE_VERSION := $(shell npx release-it $(RELEASE_IT_LEVEL) --release-version))
+ifeq ($(BUILDABLE),true)
+	$(eval RELEASE_IT_GITHUB_OPTIONS += "--github.assets=$(BUNDLE_NAME)-bundle-$(PACKAGE_VERSION).zip \\")
+endif
 
 	npx release-it \
-			--no-increment \
-			--no-git \
-			--no-npm \
+		$(RELEASE_IT_LEVEL) \
 			--github.release \
 			--github.update \
-			--github.assets=$(BUNDLE_NAME)-bundle-$(PACKAGE_VERSION).zip \
 			--no-github.draft \
 			$(RELEASE_IT_GITHUB_OPTIONS)
 
 	@# Remove the bundle from release-zip again.
 	@# But don't break if it doesn't exist.
 	-rm $(BUNDLE_NAME)-bundle-$(PACKAGE_VERSION).zip
-
-
-.PHONY: release
-release: clean install check release-npm release-github
-	@# Note: If you want to include the compiled bundle in your npm package you
-	@#       have to allow it in a .npmignore file.
 
 
 .PHONY: release-major
