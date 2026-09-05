@@ -2,6 +2,21 @@
 
 
 
+## [4.0.2](https://github.com/Patternslib/dev/compare/4.0.1...4.0.2) (2026-09-05)
+
+### Bug Fixes
+
+
+* Fix repeated changelog entries. ([1a1095d](https://github.com/Patternslib/dev/commit/1a1095d500fbc9a9148142d7a1181b1479743a8d))
+
+  When releasing the changelog file got messed up by repeating already
+included changelog entries. That was due to a setting, which should have
+combined all pre-release changes into a final release.
+
+This was given up in favor of a clean changelog entry list. The final
+release will not combine all pre-release changes. This is what most
+projects do anyways, so this change is fine, IMO.
+
 ## [4.0.1](https://github.com/Patternslib/dev/compare/4.0.0...4.0.1) (2026-09-05)
 
 ### Bug Fixes
