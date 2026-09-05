@@ -2,6 +2,26 @@
 
 
 
+## [4.0.1](https://github.com/Patternslib/dev/compare/4.0.0...4.0.1) (2026-09-05)
+
+### Bug Fixes
+
+
+* Fix problems with recent releases. ([ece3ae5](https://github.com/Patternslib/dev/commit/ece3ae5342157097f35b9bba0829c685661b5456))
+
+  The following problems are now fixed:
+
+- Whole history included in new changelog entries.
+- No dist/ published due to silent failures.
+- No GitHub release page updates.
+- No GutHub bundle zip upload.
+
+
+### Maintenance
+
+
+* **release-it:** Allow to release from version-branches (e.g. 2.0.x or 2.x). ([c4cd074](https://github.com/Patternslib/dev/commit/c4cd074b6e2b689fec3e28b0c0855b7503c7a06f))
+
 ## [4.0.0](https://github.com/Patternslib/dev/compare/3.9.0-alpha.1...4.0.0) (2026-04-23)
 
 ### Features

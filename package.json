@@ -1,6 +1,6 @@
 {
     "name": "@patternslib/dev",
-    "version": "4.0.0",
+    "version": "4.0.1",
     "description": "Development base files for working with Patternslib and add-ons.",
     "license": "MIT",
     "dependencies": {
@@ -11,7 +11,6 @@
         "@eslint/js": "^10.0.1",
         "@release-it/conventional-changelog": "^10.0.6",
         "babel-loader": "^10.1.1",
-        "caniuse-lite": "1.0.30001790",
         "css-loader": "^7.1.4",
         "eslint": "^10.2.1",
         "eslint-config-prettier": "^10.1.8",
