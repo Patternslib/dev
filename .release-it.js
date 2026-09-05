@@ -3,7 +3,7 @@ const path = require("path");
 
 const commits_template = fs
     .readFileSync(
-        path.resolve(__dirname, "release-it", "conventional-changelog-commit.hbs")
+        path.resolve(__dirname, "release-it", "conventional-changelog-commit.hbs"),
     )
     .toString();
 
@@ -56,6 +56,6 @@ module.exports = {
         // the new version number comment in the entry scripts.
         // Use the make target which does a check to not build if the package
         // is this `@patternslib/dev` package.
-        "after:bump": "make bundle; make release-zip",
+        "after:bump": "make bundle && make release-zip",
     },
 };

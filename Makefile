@@ -20,6 +20,7 @@ PACKAGE_NAME := $(shell node -p "require('./package.json').name")
 BUNDLE_NAME := $(subst @patternslib/,,$(subst @plone/,,$(PACKAGE_NAME)))
 
 
+.PHONY: install
 yarn.lock install: .git/hooks/commit-msg
 	$(YARN) install
 
@@ -29,7 +30,7 @@ yarn.lock install: .git/hooks/commit-msg
 	chmod u+x .git/hooks/commit-msg
 
 
-.PHONY: clean
+.PHONY: clean-dist
 clean-dist:
 	rm -Rf dist/
 
@@ -84,7 +85,7 @@ ifeq ($(BUILDABLE),true)
 	$(eval PACKAGE_VERSION := $(shell node -p "require('./package.json').version"))
 	@echo Creating $(BUNDLE_NAME)-bundle-$(PACKAGE_VERSION).zip
 	mkdir -p $(BUNDLE_NAME)-bundle-$(PACKAGE_VERSION)
-	-cp -R dist/* $(BUNDLE_NAME)-bundle-$(PACKAGE_VERSION)
+	cp -R dist/. $(BUNDLE_NAME)-bundle-$(PACKAGE_VERSION)
 	zip -r $(BUNDLE_NAME)-bundle-$(PACKAGE_VERSION).zip $(BUNDLE_NAME)-bundle-$(PACKAGE_VERSION)/
 	rm -Rf $(BUNDLE_NAME)-bundle-$(PACKAGE_VERSION)
 endif
@@ -98,7 +99,7 @@ ifeq ($(LEVEL),$(filter $(LEVEL), alpha beta))
 
 	@# Changelog for the GitHub release when doing prereleases:
 	@# Include all the changes since the previous pre- or regular release.
-	$(eval RELEASE_IT_GITHUB_OPTIONS += "")
+	$(eval RELEASE_IT_GITHUB_OPTIONS :=)
 
 	@# Set level argument for release-it.
 	$(eval RELEASE_IT_LEVEL := "--preRelease=$(LEVEL)")
@@ -109,27 +110,28 @@ else
 	@# Include all changes since the previous regular release, also including
 	@# changes from pre-releases.
 	@# See: https://github.com/release-it/release-it/blob/master/docs/pre-releases.md
-	$(eval RELEASE_IT_GITHUB_OPTIONS += "--git.tagExclude='*[-]*' \\")
+	$(eval RELEASE_IT_GITHUB_OPTIONS := --git.tagExclude='*[-]*')
 
 	@# Set level argument for release-it.
 	$(eval RELEASE_IT_LEVEL := $(LEVEL))
 endif
 
 
+# Note release-zip is run via the `after:bump` hook from .release-it.js, so
+# that the build contains the correct version bump.
 .PHONY: release
 release: clean install check prepare-release
-	@# Note: If you want to include the compiled bundle in your npm package you
-	@#       have to allow it in a .npmignore file.
+	@# Note: The consuming package must include dist/ in its package.json files list.
 
 	$(eval PACKAGE_VERSION := $(shell npx release-it $(RELEASE_IT_LEVEL) --release-version))
 ifeq ($(BUILDABLE),true)
-	$(eval RELEASE_IT_GITHUB_OPTIONS += "--github.assets=$(BUNDLE_NAME)-bundle-$(PACKAGE_VERSION).zip \\")
+	$(eval RELEASE_IT_GITHUB_OPTIONS += --github.assets=$(BUNDLE_NAME)-bundle-$(PACKAGE_VERSION).zip)
 endif
 
 	npx release-it \
 		$(RELEASE_IT_LEVEL) \
 			--github.release \
-			--github.update \
+			--no-github.update \
 			--no-github.draft \
 			$(RELEASE_IT_GITHUB_OPTIONS)
 
@@ -140,25 +142,25 @@ endif
 
 .PHONY: release-major
 release-major:
-	make LEVEL=major release
+	$(MAKE) LEVEL=major release
 
 
 .PHONY: release-minor
 release-minor:
-	make LEVEL=minor release
+	$(MAKE) LEVEL=minor release
 
 
 .PHONY: release-patch
 release-patch:
-	make LEVEL=patch release
+	$(MAKE) LEVEL=patch release
 
 .PHONY: prerelease-alpha
 prerelease-alpha:
-	make LEVEL=alpha release
+	$(MAKE) LEVEL=alpha release
 
 .PHONY: prerelease-beta
 prerelease-beta:
-	make LEVEL=beta release
+	$(MAKE) LEVEL=beta release
 
 
 .PHONY: serve
