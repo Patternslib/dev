@@ -94,23 +94,14 @@ endif
 # Prepare some necessary variables.
 .PHONY: prepare-release
 prepare-release:
+	$(eval RELEASE_IT_GITHUB_OPTIONS :=)
 ifeq ($(LEVEL),$(filter $(LEVEL), alpha beta))
 	@# case alpha or beta pre-release
-
-	@# Changelog for the GitHub release when doing prereleases:
-	@# Include all the changes since the previous pre- or regular release.
-	$(eval RELEASE_IT_GITHUB_OPTIONS :=)
 
 	@# Set level argument for release-it.
 	$(eval RELEASE_IT_LEVEL := "--preRelease=$(LEVEL)")
 else
 	@# case normal major/minor/patch release
-
-	@# Changelog for the GitHub release when doing regular releases:
-	@# Include all changes since the previous regular release, also including
-	@# changes from pre-releases.
-	@# See: https://github.com/release-it/release-it/blob/master/docs/pre-releases.md
-	$(eval RELEASE_IT_GITHUB_OPTIONS := --git.tagExclude='*[-]*')
 
 	@# Set level argument for release-it.
 	$(eval RELEASE_IT_LEVEL := $(LEVEL))
