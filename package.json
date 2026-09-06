@@ -3,6 +3,7 @@
     "version": "4.0.2",
     "description": "Development base files for working with Patternslib and add-ons.",
     "license": "MIT",
+    "packageManager": "pnpm@12.3.4",
     "dependencies": {
         "@babel/core": "^7.29.0",
         "@babel/preset-env": "^7.29.2",
@@ -31,8 +32,7 @@
         "webpack-bundle-analyzer": "^5.3.0",
         "webpack-cli": "^7.0.2",
         "webpack-dev-server": "^5.2.3",
-        "whybundled": "^2.0.0",
-        "yarn": "^1.22.22"
+        "whybundled": "^2.0.0"
     },
     "engines": {
         "node": ">=22"
