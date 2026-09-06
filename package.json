@@ -35,7 +35,7 @@
         "whybundled": "2.0.0"
     },
     "engines": {
-        "node": ">=22"
+        "node": "^22.18.0 || >=24.11.0"
     },
     "scripts": {
         "postinstall": "cd $INIT_CWD && make upgrade || true",
