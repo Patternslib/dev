@@ -13,7 +13,7 @@ export
 
 ESLINT ?= npx eslint
 PRETTIER ?= npx prettier
-YARN   ?= npx yarn
+PNPM   ?= npx pnpm
 
 BUILDABLE := $(shell node -p "Boolean(require('./package.json').scripts?.build)")
 PACKAGE_NAME := $(shell node -p "require('./package.json').name")
@@ -21,8 +21,8 @@ BUNDLE_NAME := $(subst @patternslib/,,$(subst @plone/,,$(PACKAGE_NAME)))
 
 
 .PHONY: install
-yarn.lock install: .git/hooks/commit-msg
-	$(YARN) install
+pnpm-lock.yaml install: .git/hooks/commit-msg
+	$(PNPM) install
 
 
 .git/hooks/commit-msg:
@@ -52,7 +52,7 @@ prettier: install
 
 .PHONY: check
 check: install eslint
-	$(YARN) run test
+	$(PNPM) run test
 
 
 .PHONY: bundle-pre
@@ -61,8 +61,8 @@ bundle-pre::
 	@# Please use double-colons `::` so that the base bundle-pre is also run.
 	@# Example: Unlink any linked dependencies.
 	@#     bundle-pre::
-	@#         -yarn unlink @patternslib/patternslib
-	@#         yarn install --force
+	@#         -pnpm unlink --recursive
+	@#         pnpm install
 	npx update-browserslist-db@latest
 
 
@@ -72,7 +72,7 @@ bundle-pre::
 .PHONY: bundle
 bundle: clean-dist bundle-pre install
 ifeq ($(BUILDABLE),true)
-	$(YARN) run build
+	$(PNPM) run build
 endif
 
 
@@ -156,13 +156,14 @@ prerelease-beta:
 
 .PHONY: serve
 serve: install
-	$(YARN) run start
+	$(PNPM) run start
 
 
 upgrade:\
 	.git/hooks/commit-msg\
 	upgrade-remove-husky\
-	upgrade-eslint
+	upgrade-eslint\
+	upgrade-pnpm
 	@# Upgrade target, depends on other upgrades
 
 
@@ -170,7 +171,7 @@ upgrade-remove-husky:
 	test -d .husky\
 		&& rm -R .husky\
 		&& git add .husky\
-		&& git commit -m"maint: @patternslib/dev upgrade - remove .husky directory in favor of git hooks."\
+		&& git commit .husky -m"maint: @patternslib/dev upgrade - remove .husky directory in favor of git hooks."\
 		|| :
 	-git config --unset core.hooksPath
 
@@ -180,10 +181,22 @@ eslint.config.js upgrade-eslint:
 		|| (\
 			echo 'module.exports = require("@patternslib/dev/eslint.config.js");' > eslint.config.js\
 			&& git add eslint.config.js\
-			&& git commit -m"maint: @patternslib/dev upgrade - create eslint.config.js."\
+			&& git commit eslint.config.js -m"maint: @patternslib/dev upgrade - create eslint.config.js."\
 		)
 	test -f ".eslintrc.js"\
 		&& rm .eslintrc.js\
 		&& git add .eslintrc.js\
-		&& git commit -m"maint: @patternslib/dev upgrade - remove old .eslintrc.js."\
+		&& git commit .eslintrc.js -m"maint: @patternslib/dev upgrade - remove old .eslintrc.js."\
+		|| :
+
+pnpm-workspace.yaml upgrade-pnpm:
+	test -f "pnpm-workspace.yaml"\
+		|| (\
+			echo '# no nested node_modules - needed by module federation' > pnpm-workspace.yaml\
+			&& echo 'shamefullyHoist: true' >> pnpm-workspace.yaml\
+			&& echo '# Allow dependencies directly from GitHub' >> pnpm-workspace.yaml\
+			&& echo 'blockExoticSubdeps: false' >> pnpm-workspace.yaml\
+			&& git add pnpm-workspace.yaml\
+			&& git commit pnpm-workspace.yaml -m"maint: Switch to pnpm."\
+		)\
 		|| :
