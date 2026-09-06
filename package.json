@@ -5,8 +5,8 @@
     "license": "MIT",
     "packageManager": "pnpm@12.3.4",
     "dependencies": {
-        "@babel/core": "7.29.0",
-        "@babel/preset-env": "7.29.2",
+        "@babel/core": "8.0.1",
+        "@babel/preset-env": "8.0.2",
         "@commitlint/cli": "20.5.0",
         "@commitlint/config-conventional": "20.5.0",
         "@eslint/js": "10.0.1",
