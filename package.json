@@ -4,8 +4,8 @@
     "description": "Development base files for working with Patternslib and add-ons.",
     "license": "MIT",
     "dependencies": {
-        "@babel/core": "^7.29.0",
-        "@babel/preset-env": "^7.29.2",
+        "@babel/core": "^8.0.1",
+        "@babel/preset-env": "^8.0.2",
         "@commitlint/cli": "^21.2.2",
         "@commitlint/config-conventional": "^21.2.2",
         "@eslint/js": "^10.0.1",
