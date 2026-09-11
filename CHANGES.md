@@ -1,5 +1,40 @@
 # Changelog
 
+
+
+## [4.1.0-alpha.0](https://github.com/Patternslib/dev/compare/4.0.2...4.1.0-alpha.0) (2026-09-11)
+
+### Features
+
+
+* **module federation:** resolve a promise once all remote bundles are initialized ([e2f0f22](https://github.com/Patternslib/dev/commit/e2f0f22d6433960ddd297fd15e53f752a30a9486))
+
+  The document-ready handler started the initialization of all Module
+Federation remote bundles but did not wait for them: the
+``patternslib__mf--loaded`` event fired before any remote had actually
+loaded and run its main module. Consumers had no way to know when the
+remotes' patterns and components were registered.
+
+The helper now initializes all remotes in parallel, waits for all of
+them to settle (a failing remote is logged and does not block the
+others), and only then dispatches the event. The new promise
+``window.__patternslib_mf_initialized`` is created at module load time,
+so it can be awaited by code running before or after document ready —
+the Patternslib registry uses it to defer the initial DOM scan.
+
+A remote's main module usually only does ``import("./bundle")`` — the
+async boundary needed to consume shared modules — and the registrations
+happen in that chunk. If the main module exports that promise as its
+default export (``export default import("./bundle")``), the helper
+waits for it as well. Remotes without the export keep working as
+before.
+
+
+### Bug Fixes
+
+
+* Cleanup changelog entries. ([c311b84](https://github.com/Patternslib/dev/commit/c311b84d22c3c10721525d3c56423d7a200d4450))
+
 ## [4.0.2](https://github.com/Patternslib/dev/compare/4.0.1...4.0.2) (2026-09-05)
 
 ### Bug Fixes
