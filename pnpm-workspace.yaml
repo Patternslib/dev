@@ -1,0 +1,6 @@
+allowBuilds:
+  '@parcel/watcher': true
+  unrs-resolver: true
+
+# no nested node_modules - needed by module federation
+shamefullyHoist: true

@@ -17,6 +17,6 @@ module.exports = {
     },
     testEnvironment: "jsdom",
     transformIgnorePatterns: [
-        "/node_modules/(?!@patternslib/)(?!@plone/)(?!preact/)(?!screenfull/).+\\.[t|j]sx?$",
+        "/node_modules/(?!(?:\\.pnpm/|@patternslib/|@plone/|preact/|screenfull/)).+\\.[tj]sx?$",
     ],
 };
