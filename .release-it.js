@@ -12,7 +12,7 @@ module.exports = {
         publish: true,
     },
     git: {
-        requireBranch: ["master", "main", "*.x"],
+        requireBranch: ["master", "main", "*.x", "alpha/*", "beta/*"],
         commitMessage: "Release new version.",
         commitArgs: ["-n"],
     },
