@@ -2,6 +2,8 @@
 
 
 
+## [4.1.0](https://github.com/Patternslib/dev/compare/4.1.0-alpha.0...4.1.0) (2026-09-16)
+
 ## [4.1.0-alpha.0](https://github.com/Patternslib/dev/compare/4.0.2...4.1.0-alpha.0) (2026-09-11)
 
 ### Features
