@@ -1,6 +1,35 @@
 # Changelog
 
+## [4.2.0](https://github.com/Patternslib/dev/compare/4.1.0...4.2.0) (2026-09-17)
 
+### Features
+
+- Format the changelog after generation. ([8477b72](https://github.com/Patternslib/dev/commit/8477b721dfd7db18aeeefe9e9c5ce2620bbeed89))
+
+    Use prettier to format the changelog after changelog generation.
+
+    Co-authored-by: Codex <noreply@openai.com>
+
+- Optimize the source map options. ([d60d03f](https://github.com/Patternslib/dev/commit/d60d03f5432d2cef8926538eaf65bf431c210ab4))
+
+    Change the source map options for production and development builds for
+    a better compromise on bundle size, build speed and debugability.
+
+- Upgrade to babel version 8, only targeting ES6+ browsers. ([228bf05](https://github.com/Patternslib/dev/commit/228bf057eb1f97d05ca85e2b22cadaf891abedd0))
+
+    ES6 browsers are a baseline since 2017, so this change can be considered
+    safe and now a breaking change.
+
+### Maintenance
+
+- Allow releases from alpha/* and beta/* branches, alongside to master, main and *.x. ([73c49fa](https://github.com/Patternslib/dev/commit/73c49fa2cb7d797626411da76f3b702f8e03a960))
+- Migrate handlebars changelog template to JavaScript render functions. ([a1685f9](https://github.com/Patternslib/dev/commit/a1685f9d84e7e36c6d2c1cc6426b454228ddf15d))
+
+    Co-authored-by: Codex <noreply@openai.com>
+
+- Update dependencies. ([c9e6d18](https://github.com/Patternslib/dev/commit/c9e6d181fb33fb165fd1dae3cec75ef6e65a3ec6))
+- Update GitHub workflow environment. ([3261bd3](https://github.com/Patternslib/dev/commit/3261bd3f8d3b0b8f5f0f4dc2138f174d26d86b8a))
+- Upgrade commitlint and release-it to v21. ([cdea75f](https://github.com/Patternslib/dev/commit/cdea75f9859641046dcc45832c650630012b6df3))
 
 ## [4.1.0](https://github.com/Patternslib/dev/compare/4.1.0-alpha.0...4.1.0) (2026-09-16)
 
@@ -8,34 +37,31 @@
 
 ### Features
 
+- **module federation:** resolve a promise once all remote bundles are initialized ([e2f0f22](https://github.com/Patternslib/dev/commit/e2f0f22d6433960ddd297fd15e53f752a30a9486))
 
-* **module federation:** resolve a promise once all remote bundles are initialized ([e2f0f22](https://github.com/Patternslib/dev/commit/e2f0f22d6433960ddd297fd15e53f752a30a9486))
-
-  The document-ready handler started the initialization of all Module
-Federation remote bundles but did not wait for them: the
-``patternslib__mf--loaded`` event fired before any remote had actually
-loaded and run its main module. Consumers had no way to know when the
-remotes' patterns and components were registered.
+    The document-ready handler started the initialization of all Module
+    Federation remote bundles but did not wait for them: the
+    `patternslib__mf--loaded` event fired before any remote had actually
+    loaded and run its main module. Consumers had no way to know when the
+    remotes' patterns and components were registered.
 
 The helper now initializes all remotes in parallel, waits for all of
 them to settle (a failing remote is logged and does not block the
 others), and only then dispatches the event. The new promise
-``window.__patternslib_mf_initialized`` is created at module load time,
+`window.__patternslib_mf_initialized` is created at module load time,
 so it can be awaited by code running before or after document ready —
 the Patternslib registry uses it to defer the initial DOM scan.
 
-A remote's main module usually only does ``import("./bundle")`` — the
+A remote's main module usually only does `import("./bundle")` — the
 async boundary needed to consume shared modules — and the registrations
 happen in that chunk. If the main module exports that promise as its
-default export (``export default import("./bundle")``), the helper
+default export (`export default import("./bundle")`), the helper
 waits for it as well. Remotes without the export keep working as
 before.
 
-
 ### Bug Fixes
 
-
-* Cleanup changelog entries. ([c311b84](https://github.com/Patternslib/dev/commit/c311b84d22c3c10721525d3c56423d7a200d4450))
+- Cleanup changelog entries. ([c311b84](https://github.com/Patternslib/dev/commit/c311b84d22c3c10721525d3c56423d7a200d4450))
 
 ## [4.0.2](https://github.com/Patternslib/dev/compare/4.0.1...4.0.2) (2026-09-05)
 
