@@ -25,6 +25,9 @@ const config_factory = (env, argv, config, babel_include = [], package_json) => 
     }
     babel_exclude = `node_modules/${babel_exclude}.*`;
 
+    const is_development = process.env.NODE_ENV === "development";
+    const is_production = process.env.NODE_ENV === "production";
+
     const base_config = {
         entry: {}, // Entry point files for your JavaScript application.
         externals: [
@@ -62,8 +65,20 @@ const config_factory = (env, argv, config, babel_include = [], package_json) => 
                                 insert: require.resolve("./style-inserter"),
                             },
                         },
-                        "css-loader",
-                        "sass-loader",
+                        {
+                            loader: "css-loader",
+                            options: {
+                                // production: false, others: loader defaults
+                                sourceMap: is_production ? false : undefined,
+                            },
+                        },
+                        {
+                            loader: "sass-loader",
+                            options: {
+                                // production: false, others: loader defaults
+                                sourceMap: is_production ? false : undefined,
+                            },
+                        },
                     ],
                 },
                 {
@@ -101,7 +116,7 @@ const config_factory = (env, argv, config, babel_include = [], package_json) => 
     // Most useful the ``entry`` entry.
     config = Object.assign(base_config, config);
 
-    if (process.env.NODE_ENV === "development") {
+    if (is_development) {
         // Add a dev server.
         config.devServer = {
             static: {
@@ -113,13 +128,21 @@ const config_factory = (env, argv, config, babel_include = [], package_json) => 
                 "Access-Control-Allow-Origin": "*",
             },
         };
+
+        if (config.devtool === undefined) {
+            // Build: slow, rebuild: fast - good compromise for development
+            // debuggability.
+            // Set to `false` for no source maps.
+            config.devtool = "eval-cheap-module-source-map";
+        }
+
         config.optimization.minimize = false;
-        config.devtool = "source-map"; // Slowest option. False for no source maps.
         config.watchOptions = {
             ignored: ["node_modules/**", "docs/**", ".git/**"],
         };
     }
-    if (process.env.NODE_ENV === "production") {
+
+    if (is_production) {
         // Minify all JS files in production mode.
         config.optimization.minimizer = [
             new TerserPlugin({
@@ -127,7 +150,13 @@ const config_factory = (env, argv, config, babel_include = [], package_json) => 
                 extractComments: false,
             }),
         ];
-        config.devtool = "source-map"; // Slowest option. False for no source maps.
+
+        if (config.devtool === undefined) {
+            // Build: slowest, rebuild: slowest - Reduce bundle size but allow
+            // tracebacks with original line numbers.
+            // Set to `false` for no source maps.
+            config.devtool = "nosources-source-map";
+        }
     }
     return config;
 };
