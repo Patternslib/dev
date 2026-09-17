@@ -1,11 +1,4 @@
-const fs = require("fs");
-const path = require("path");
-
-const commits_template = fs
-    .readFileSync(
-        path.resolve(__dirname, "release-it", "conventional-changelog-commit.hbs"),
-    )
-    .toString();
+const commitPartial = require("./release-it/conventional-changelog-commit.js");
 
 module.exports = {
     npm: {
@@ -47,11 +40,14 @@ module.exports = {
                 ],
             },
             writerOpts: {
-                commitPartial: commits_template,
+                commitPartial,
             },
         },
     },
     hooks: {
+        // Format the changelog after it is written, before Git stages it.
+        "after:@release-it/conventional-changelog:beforeRelease":
+            "npx prettier --write CHANGES.md",
         // Run `make bundle` after the version is bumped to get a build with
         // the new version number comment in the entry scripts.
         // Use the make target which does a check to not build if the package
