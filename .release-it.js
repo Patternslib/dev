@@ -1,11 +1,4 @@
-const fs = require("fs");
-const path = require("path");
-
-const commits_template = fs
-    .readFileSync(
-        path.resolve(__dirname, "release-it", "conventional-changelog-commit.hbs"),
-    )
-    .toString();
+const commitPartial = require("./release-it/conventional-changelog-commit.js");
 
 module.exports = {
     npm: {
@@ -47,7 +40,7 @@ module.exports = {
                 ],
             },
             writerOpts: {
-                commitPartial: commits_template,
+                commitPartial,
             },
         },
     },
