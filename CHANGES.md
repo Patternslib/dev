@@ -1,5 +1,21 @@
 # Changelog
 
+## [4.2.1](https://github.com/Patternslib/dev/compare/4.2.0...4.2.1) (2026-09-18)
+
+### Bug Fixes
+
+- Correct SVG file references. ([987adc3](https://github.com/Patternslib/dev/commit/987adc305acd8b59b2870e3aa3034391274b0d0e))
+
+    SVG files which are referenced in CSS/JS URL directives are now emitted
+    as separate files which can be imported via the URL directive. Raw SVG
+    imports in JavaScript files are still included as source.
+
+    This fixes an issue where SVG references in CSS files were broken.
+
+### Maintenance
+
+- Upgrade dependencies. ([ae2ba0f](https://github.com/Patternslib/dev/commit/ae2ba0f973042e16546becc4c0131226541e6d5b))
+
 ## [4.2.0](https://github.com/Patternslib/dev/compare/4.1.0...4.2.0) (2026-09-17)
 
 ### Features
