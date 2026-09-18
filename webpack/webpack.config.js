@@ -82,8 +82,23 @@ const config_factory = (env, argv, config, babel_include = [], package_json) => 
                     ],
                 },
                 {
-                    test: /\.*(?:html|xml|svg)$/i,
+                    test: /\.(?:html|xml)$/i,
                     type: "asset/source",
+                },
+                {
+                    test: /\.svg$/i,
+                    oneOf: [
+                        {
+                            // Keep resource imports for CSS url(...) and
+                            // JavaScript new URL(..., import.meta.url)
+                            dependency: "url",
+                            type: "asset/resource",
+                        },
+                        {
+                            // Preserve raw markup for ordinary JavaScript SVG imports.
+                            type: "asset/source",
+                        },
+                    ],
                 },
                 {
                     test: /\.(eot|woff|woff2|ttf|png|jpe?g|gif|webp)$/i,
