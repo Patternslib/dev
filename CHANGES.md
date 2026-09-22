@@ -1,5 +1,19 @@
 # Changelog
 
+## [4.3.0](https://github.com/Patternslib/dev/compare/4.2.1...4.3.0) (2026-09-22)
+
+### Features
+
+- Switch from yarn to pnpm. ([49e1ae8](https://github.com/Patternslib/dev/commit/49e1ae8979a8bdba71fbd12670b906567293aeae))
+
+    Note: This is not considered a breaking change. Depending packages
+    should not even break their development workflows.
+
+### Maintenance
+
+- Update minimum node version. ([e7cedaf](https://github.com/Patternslib/dev/commit/e7cedaf3f392b01ac8a5cb1c86ed97c8187617a4))
+- Upgrade dependencies. ([413752c](https://github.com/Patternslib/dev/commit/413752cf033690da7b522ba12e127cc002815ac2))
+
 ## [4.2.1](https://github.com/Patternslib/dev/compare/4.2.0...4.2.1) (2026-09-18)
 
 ### Bug Fixes
