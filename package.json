@@ -3,7 +3,7 @@
     "version": "4.3.0",
     "description": "Development base files for working with Patternslib and add-ons.",
     "license": "MIT",
-    "packageManager": "pnpm@12.3.4",
+    "packageManager": "pnpm@12.16.1",
     "dependencies": {
         "@babel/core": "^8.0.6",
         "@babel/preset-env": "^8.0.6",
