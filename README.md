@@ -4,6 +4,10 @@ This repository includes base files which are extended in Patternslib, Mockup or
 
 It includes a Makefile which helps in installing and releasing packages.
 
+## Updating dependencies
+
+Run `make update` to update the dependencies in this or your dependent project.
+
 ## Upgrading
 
 Run `make upgrade` in your project.
