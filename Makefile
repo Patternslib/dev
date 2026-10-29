@@ -26,6 +26,20 @@ BUNDLE_NAME := $(subst @patternslib/,,$(subst @plone/,,$(PACKAGE_NAME)))
 pnpm-lock.yaml install: .git/hooks/commit-msg
 	$(PNPM) install
 
+# Update dependencies
+# Update pnpm version and project dependencies individually and create 3 separate commits.
+# Don't fail if nothing needs a commit.
+.PHONY: update
+update:
+	@if ! git diff --quiet -- package.json || ! git diff --cached --quiet -- package.json; then \
+		echo "Warning: package.json has uncommitted changes. Commit or stash them before running make update." >&2; \
+		exit 1; \
+	fi
+	$(PNPM) self-update
+	-git commit package.json -m"maint: Update pnpm."
+	$(PNPM) update --latest --interactive
+	-git commit package.json -m"maint: Update dependencies."
+	-git commit pnpm-lock.yaml -m"pnpm-lock.yaml: Update." -n
 
 .git/hooks/commit-msg:
 	echo "npx commitlint --edit" > .git/hooks/commit-msg
