@@ -1,5 +1,22 @@
 # Changelog
 
+## [4.4.0](https://github.com/Patternslib/dev/compare/4.3.0...4.4.0) (2026-11-05)
+
+### Features
+
+- Add "update" Makefile target. ([846adbe](https://github.com/Patternslib/dev/commit/846adbe65593309cd8031a5f60f6ec3f4e139418))
+
+    `make update` will update pnpm version and project dependencies
+    individually and create 3 separate commits.
+
+- Use the dependencies-update branch for make update. ([6f9523d](https://github.com/Patternslib/dev/commit/6f9523dfbd527773a4996e434fd6059daf6ce743))
+
+### Maintenance
+
+- Update dependencies. ([1e805ee](https://github.com/Patternslib/dev/commit/1e805ee1486fb802c6f38afc7ef98c95f16ab5a3))
+- Update dependencies. ([5a2e7c8](https://github.com/Patternslib/dev/commit/5a2e7c85e1ce628d2cb575b00acdec64f8677a82))
+- Update pnpm. ([50a976b](https://github.com/Patternslib/dev/commit/50a976b082ae5978b28d9f94135084f68eb1f47c))
+
 ## [4.3.0](https://github.com/Patternslib/dev/compare/4.2.1...4.3.0) (2026-09-22)
 
 ### Features
