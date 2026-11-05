@@ -35,6 +35,12 @@ update:
 		echo "Warning: package.json has uncommitted changes. Commit or stash them before running make update." >&2; \
 		exit 1; \
 	fi
+	@if ! git checkout -b dependencies-update; then \
+		echo ""; \
+		echo "Warning: the branch dependencies-update already exists. If it was already merged, you might want to delete if locally with \`git branch -D dependencies-update\`." >&2; \
+		echo ""; \
+		exit 1; \
+	fi
 	$(PNPM) self-update
 	-git commit package.json -m"maint: Update pnpm."
 	$(PNPM) update --latest --interactive
